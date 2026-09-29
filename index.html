@@ -1,357 +1,318 @@
+```html
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camargo Despachante | SSP-90775 - Serviços Automotivos</title>
+    <title>Camargo Despachante | Credenciado DETRAN SSP-90775</title>
     
-    <!-- Google Fonts & Font Awesome Icons -->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#D32F2F',
+                            darkRed: '#991B1B',
+                            hoverRed: '#B71C1C',
+                            accent: '#22C55E'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- AOS Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --bg-primary: #f8fafc;
-            --bg-card: #ffffff;
-            --bg-secondary: #f1f5f9;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #94a3b8;
-            --border-color: #e2e8f0;
-            --primary-red: #d32f2f;
-            --primary-hover: #b71c1c;
-            --accent-green: #22c55e;
-            --accent-green-bg: rgba(34, 197, 94, 0.15);
-            --header-bg: rgba(255, 255, 255, 0.9);
-            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
-            --nav-browser-bg: #e2e8f0;
-            --tab-active-bg: #ffffff;
-            --tab-inactive-bg: #cbd5e1;
-        }
-
-        [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-card: #1e293b;
-            --bg-secondary: #0f172a;
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --text-muted: #64748b;
-            --border-color: #334155;
-            --header-bg: rgba(15, 23, 42, 0.9);
-            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
-            --nav-browser-bg: #0f172a;
-            --tab-active-bg: #1e293b;
-            --tab-inactive-bg: #334155;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Header & Nav */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: var(--header-bg);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
+        /* Animated Pulsing Dot for Status Badge */
+        @keyframes pulseGlow {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .pulse-open {
+            animation: pulseGlow 2s infinite;
         }
 
-        .logo-badge {
-            width: 42px;
-            height: 42px;
-            background: var(--primary-red);
-            color: #ffffff;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.1rem;
+        /* Floating WhatsApp Wave Effect */
+        @keyframes waWave {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        .logo-text h1 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.2;
+        .wa-float {
+            animation: waWave 2s infinite;
         }
 
-        .logo-text span {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .theme-toggle {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
-
-        .btn-header {
-            background: var(--primary-red);
-            color: #ffffff;
-            padding: 0.6rem 1.2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 9rem 5% 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .status-container {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 0.4rem 1rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow);
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .status-badge.open {
-            background: var(--accent-green-bg);
-            color: var(--accent-green);
-        }
-
-        .status-badge.closed {
-            background: rgba(211, 47, 47, 0.15);
-            color: var(--primary-red);
-        }
-
-        .status-dot {
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
-            border-radius: 50%;
-            display: inline-block;
         }
-
-        .status-badge.open .status-dot { background: var(--accent-green); animation: pulseDot 1.5s infinite; }
-        .status-badge.closed .status-dot { background: var(--primary-red); }
-
-        @keyframes pulseDot {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(1.2); }
-            100% { opacity: 1; transform: scale(1); }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
         }
-
-        .hero h2 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
         }
-
-        .hero h2 span {
-            color: var(--primary-red);
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
         }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-brand-red selection:text-white">
 
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 650px;
-            margin: 0 auto 2rem;
-        }
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 dark:bg-slate-900/90 border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 bg-gradient-to-tr from-brand-darkRed to-brand-red text-white rounded-xl flex items-center justify-center font-black text-xl shadow-md shadow-brand-red/20 group-hover:scale-105 transition-transform">
+                    CD
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-lg sm:text-xl text-slate-900 dark:text-white leading-tight flex items-center gap-2">
+                        Camargo Despachante
+                    </h1>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                        <span class="bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-brand-red dark:text-red-400 font-mono">SSP-90775</span>
+                        <span>• Bairro do Limão</span>
+                    </div>
+                </div>
+            </a>
 
-        .hero-cta {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+            <!-- Right Controls -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <!-- Theme Toggle Button -->
+                <button id="themeToggle" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none focus:ring-2 focus:ring-brand-red">
+                    <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+                </button>
 
-        .btn-main {
-            background: #25d366;
-            color: #ffffff;
-            padding: 0.9rem 1.8rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-        }
+                <!-- Header CTA Button -->
+                <a href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener font-bold" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-red hover:bg-brand-hoverRed text-white text-sm font-semibold rounded-xl shadow-lg shadow-brand-red/25 hover:shadow-brand-red/40 hover:-translate-y-0.5 transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Atendimento Rápido</span>
+                </a>
+            </div>
+        </div>
+    </header>
 
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 2rem auto 4rem;
-            padding: 0 5%;
-        }
+    <!-- Hero Section -->
+    <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
+        <!-- Background Ambient Blur -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-red/10 dark:bg-brand-red/20 blur-3xl rounded-full pointer-events-none"></div>
 
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center max-w-3xl mx-auto">
+                
+                <!-- Status Badge Banner -->
+                <div class="inline-flex items-center gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full px-4 py-2 shadow-sm mb-8">
+                    <span id="statusDot" class="w-3 h-3 rounded-full bg-slate-400"></span>
+                    <span id="statusText" class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200">Verificando horário...</span>
+                    <span class="text-slate-300 dark:text-slate-700">|</span>
+                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                        <i class="fa-solid fa-shield-halved text-brand-red"></i> Credencial SSP-90775
+                    </span>
+                </div>
 
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--primary-red);
-            margin-bottom: 0.2rem;
-        }
+                <!-- Main Headline -->
+                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-none mb-6">
+                    Soluções veiculares <br class="hidden sm:inline">
+                    <span class="bg-gradient-to-r from-brand-red to-red-500 bg-clip-text text-transparent">sem filas e sem complicação.</span>
+                </h2>
 
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
+                <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto">
+                    Transferências, licenciamento, emplacamento Mercosul e regularização de débitos. Atendimento especializado na Zona Norte com total transparência e segurança.
+                </p>
 
-        /* Browser Window Tabs Section */
-        .browser-section {
-            max-width: 1100px;
-            margin: 4rem auto;
-            padding: 0 5%;
-        }
+                <!-- Hero Actions -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20de%20documenta%C3%A7%C3%A3o." target="_blank" rel="noopener" class="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base rounded-2xl shadow-xl shadow-emerald-600/25 hover:shadow-emerald-600/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-3">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <span>Fazer Orçamento Grátis</span>
+                    </a>
+                    <a href="#servicos" class="w-full sm:w-auto px-8 py-4 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 font-bold text-base rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center justify-center gap-2">
+                        <span>Ver Nossos Serviços</span>
+                        <i class="fa-solid fa-arrow-down text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        .browser-window {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
+    <!-- Stats Counter Section -->
+    <section class="py-8 bg-slate-100/80 dark:bg-slate-900/50 border-y border-slate-200/80 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                
+                <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/60 dark:border-slate-800 shadow-sm">
+                    <div class="text-2xl sm:text-4xl font-extrabold text-brand-red mb-1 font-mono">
+                        <span class="counter" data-target="12">0</span>x
+                    </div>
+                    <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">no Cartão de Crédito</div>
+                </div>
 
-        .browser-header {
-            background: var(--nav-browser-bg);
-            padding: 0.8rem 1rem 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            border-bottom: 1px solid var(--border-color);
-        }
+                <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/60 dark:border-slate-800 shadow-sm">
+                    <div class="text-2xl sm:text-4xl font-extrabold text-brand-red mb-1 font-mono">
+                        <span class="counter" data-target="100">0</span>%
+                    </div>
+                    <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">Atendimento Seguro</div>
+                </div>
 
-        .browser-dots {
-            display: flex;
-            gap: 6px;
-        }
+                <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/60 dark:border-slate-800 shadow-sm">
+                    <div class="text-2xl sm:text-4xl font-extrabold text-brand-red mb-1 font-mono">
+                        <span class="counter" data-target="90775">0</span>
+                    </div>
+                    <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">Credencial DETRAN / SSP</div>
+                </div>
 
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
+                <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/60 dark:border-slate-800 shadow-sm">
+                    <div class="text-2xl sm:text-4xl font-extrabold text-brand-red mb-1 font-mono">
+                        <span class="counter" data-target="24">0</span>h
+                    </div>
+                    <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">Retorno Rápido via WhatsApp</div>
+                </div>
 
-        .dot-red { background: #ff5f56; }
-        .dot-yellow { background: #ffbd2e; }
-        .dot-green { background: #27c93f; }
+            </div>
+        </div>
+    </section>
 
-        .browser-tabs {
-            display: flex;
-            gap: 6px;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
+    <!-- Interactive Desktop Browser Services Section -->
+    <section id="servicos" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-3">
+                Serviços Especializados
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+                Clique nas abas abaixo para consultar o procedimento de cada serviço veicular.
+            </p>
+        </div>
 
-        .browser-tabs::-webkit-scrollbar {
-            display: none;
-        }
+        <!-- Browser Mockup Box -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden">
+            
+            <!-- Browser Header Bar -->
+            <div class="bg-slate-100 dark:bg-slate-950 px-4 pt-3 pb-0 border-b border-slate-200 dark:border-slate-800 flex flex-col gap-3">
+                
+                <!-- Window Dots & Controls -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                    </div>
+                    <div class="text-xs text-slate-400 dark:text-slate-600 font-mono hidden sm:block">
+                        Camargo Navigation System v2.0
+                    </div>
+                </div>
 
-        .tab-btn {
-            background: var(--tab-inactive-bg);
-            color: var(--text-secondary);
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
+                <!-- Tabs Container -->
+                <div class="flex items-center gap-1 overflow-x-auto no-scrollbar scroll-smooth pt-2">
+                    <button onclick="selectTab('transferencia')" id="tab-transferencia" class="tab-btn active px-4 py-2.5 rounded-t-xl font-semibold text-xs sm:text-sm flex items-center gap-2 whitespace-nowrap transition-all border-t border-x border-transparent">
+                        <i class="fa-solid fa-right-left text-brand-red"></i>
+                        <span>Transferência</span>
+                    </button>
+                    <button onclick="selectTab('licenciamento')" id="tab-licenciamento" class="tab-btn px-4 py-2.5 rounded-t-xl font-semibold text-xs sm:text-sm flex items-center gap-2 whitespace-nowrap transition-all border-t border-x border-transparent">
+                        <i class="fa-solid fa-id-card text-brand-red"></i>
+                        <span>Licenciamento</span>
+                    </button>
+                    <button onclick="selectTab('placas')" id="tab-placas" class="tab-btn px-4 py-2.5 rounded-t-xl font-semibold text-xs sm:text-sm flex items-center gap-2 whitespace-nowrap transition-all border-t border-x border-transparent">
+                        <i class="fa-solid fa-car-rear text-brand-red"></i>
+                        <span>Placas Mercosul</span>
+                    </button>
+                    <button onclick="selectTab('sinistro')" id="tab-sinistro" class="tab-btn px-4 py-2.5 rounded-t-xl font-semibold text-xs sm:text-sm flex items-center gap-2 whitespace-nowrap transition-all border-t border-x border-transparent">
+                        <i class="fa-solid fa-unlock-keyhole text-brand-red"></i>
+                        <span>Desbloqueio de Sinistro</span>
+                    </button>
+                </div>
+            </div>
 
-        .tab-btn.active {
-            background: var(--tab-active-bg);
-            color: var(--primary-red);
-        }
+            <!-- Address Bar Mockup -->
+            <div class="bg-slate-50 dark:bg-slate-900/60 px-4 py-2 border-b border-slate-200 dark:border-slate-800 flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400">
+                <i class="fa-solid fa-lock text-emerald-500"></i>
+                <span class="text-slate-400">https://</span>
+                <span class="text-slate-700 dark:text-slate-200 font-semibold">camargodespachante.com.br/servicos/</span><span id="addressPath" class="text-brand-red font-bold">transferencia</span>
+            </div>
 
-        .browser-address {
-            background: var(--bg-secondary);
-            padding: 0.4rem 1rem;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 1px solid var(--border-color);
+            <!-- Browser Content Pane -->
+            <div class="p-6 sm:p-10 min-h-[320px] flex items-center">
+                
+                <!-- Tab: Transferência -->
+                <div id="content-transferencia" class="tab-pane w-full">
+                    <div class="grid lg:grid-cols-3 gap-8 items-center">
+                        <div class="lg:col-span-2">
+                            <span class="inline-block px-3 py-1 bg-red-100 dark:bg-red-950/60 text-brand-red text-xs font-bold rounded-full mb-3">Atendimento Rápido</span>
+                            <h4 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-4">
+                                Transferência de Propriedade Veicular
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                                Comprou ou vendeu um veículo? Cuidamos de todo o processo de transferência junto ao DETRAN-SP, verificação de pendências financeiras, emissão do novo CRLV-e e acompanhamento completo de laudo cautelar.
+                            </p>
+                            <ul class="space-y-2 mb-8 text-sm text-slate-700 dark:text-slate-300 font-medium">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500"></i> Levantamento prévio de débitos e restrições</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500"></i> Regularização e baixa no sistema do DETRAN</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500"></i> Opção de parcelamento das taxas em até 12x</li>
+                            </ul>
+                            <a href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20a%20transfer%C3%AAncia%20do%20meu%20ve%C3%ADculo." target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-brand-red hover:bg-brand-hoverRed text-white font-bold rounded-xl transition-all shadow-lg shadow-brand-red/20">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                <span>Iniciar Transferência Agora</span>
+                            </a>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/60">
+                            <h5 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                                <i class="fa-solid fa-file-contract text-brand-red"></i> Documentos Necessários:
+                            </h5>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                                • CNH ou RG/CPF do comprador<br>
+                                • Comprovante de endereço recente<br>
+                                • CRV/ATPV-e (Recibo assinado e reconhecido)<br>
+                                • Laudo de Vistoria ECV aprovado
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Licenciamento -->
+                <div id="content-licenciamento" class="tab-pane hidden w-full">
+                    <div class="grid lg:grid-cols-3 gap-8 items-center">
+                        <div class="lg:col-span-2">
+                            <span class="inline-block px-3 py-1 bg-red-100 dark:bg-red-950/60 text-brand-red text-xs font-bold rounded-full mb-3">Digital & Imediato</span>
+                            <h4 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-4">
+                                Licenciamento Anual (CRLV-e)
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                                Evite multas e apreensão do veículo! Emitimos o documento digital (CRLV-e) atualizado do seu veículo no mesmo dia. Regularize IPVA, DPVAT e eventuais multas pendentes.
+                            </p>
+                            <ul class="space-y-2 mb-8 text-sm text-slate-700 dark:text-slate-300 font-medium">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500"></i> Emissão do Documento Digital PDF direto no seu WhatsApp</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500"></i> Parcelamento de todos os débitos em até 12x no cartão</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500"></i> Atendimento para veículos de passeio, motos e frotas</li>
+                            </ul>
+                            <a href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Preciso%20licenciar%20meu%20ve%C3%ADculo." target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-brr-color);
         }
 
         .browser-content {
