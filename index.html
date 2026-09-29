@@ -1,363 +1,580 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camargo Despachante | SSP-90775 - Soluções Automotivas</title>
-    
-    <!-- Google Fonts & Icons -->
-    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap)" rel="stylesheet">
-    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camargo Despachante | SSP-90775 - Soluções Automotivas</title>
 
-    <style>
-        :root {
-            --bg-body: #f8fafc;
-            --bg-card: #ffffff;
-            --bg-secondary: #f1f5f9;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --primary-red: #d32f2f;
-            --green-open: #22c55e;
-            --red-closed: #ef4444;
-            --whatsapp-green: #25d366;
-            --header-bg: rgba(255, 255, 255, 0.95);
-            --tab-inactive: #cbd5e1;
-        }
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        [data-theme="dark"] {
-            --bg-body: #0f172a;
-            --bg-card: #1e293b;
-            --bg-secondary: #0f172a;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
-            --header-bg: rgba(15, 23, 42, 0.95);
-            --tab-inactive: #334155;
-        }
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
+<style>
+    :root {
+        --bg-body: #f8fafc;
+        --bg-card: #ffffff;
+        --bg-secondary: #f1f5f9;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --border-color: #e2e8f0;
+        --primary-red: #d32f2f;
+        --green-open: #22c55e;
+        --red-closed: #ef4444;
+        --whatsapp-green: #25d366;
+        --header-bg: rgba(255, 255, 255, 0.95);
+        --tab-inactive: #e2e8f0;
+        --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
 
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding-bottom: 2rem;
-        }
+    [data-theme="dark"] {
+        --bg-body: #0f172a;
+        --bg-card: #1e293b;
+        --bg-secondary: #0f172a;
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+        --border-color: #334155;
+        --header-bg: rgba(15, 23, 42, 0.95);
+        --tab-inactive: #334155;
+        --shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    }
 
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: var(--header-bg);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 0.8rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+    }
 
-        .logo-box {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    html { scroll-behavior: smooth; }
 
-        .logo-badge {
-            width: 38px;
-            height: 38px;
-            background: var(--primary-red);
-            color: #fff;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1rem;
-        }
+    body {
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        padding-bottom: 2rem;
+        transition: background-color .3s ease, color .3s ease;
+    }
 
-        .logo-info h1 {
-            font-size: 1rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
+    /* ---------- Header ---------- */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: var(--header-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: .8rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--border-color);
+    }
 
-        .logo-info span {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
+    .logo-box { display: flex; align-items: center; gap: 10px; }
 
-        .theme-toggle-btn {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
+    .logo-badge {
+        width: 38px; height: 38px;
+        background: var(--primary-red);
+        color: #fff;
+        border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 800; font-size: 1rem;
+        flex-shrink: 0;
+    }
 
-        /* Hero Section */
-        .hero {
-            padding: 7rem 5% 3rem;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
+    .logo-info h1 { font-size: 1rem; font-weight: 700; line-height: 1.2; }
+    .logo-info span { font-size: .75rem; color: var(--text-muted); }
 
-        .status-container {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 1.2rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
+    .theme-toggle-btn {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        color: var(--text-main);
+        width: 38px; height: 38px;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: transform .2s ease, background-color .3s ease;
+    }
+    .theme-toggle-btn:hover { transform: scale(1.08); }
 
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
+    /* ---------- Hero ---------- */
+    .hero {
+        padding: 7rem 5% 3rem;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+    }
 
-        .status-pill.open {
-            background: rgba(34, 197, 94, 0.15);
-            color: var(--green-open);
-        }
+    .status-container {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        padding: .5rem 1.2rem;
+        border-radius: 30px;
+        font-size: .85rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+    }
 
-        .status-pill.closed {
-            background: rgba(239, 68, 68, 0.15);
-            color: var(--red-closed);
-        }
+    .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: .2rem .6rem;
+        border-radius: 20px;
+        font-size: .75rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        transition: background-color .3s ease, color .3s ease;
+    }
 
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
+    .status-pill.open  { background: rgba(34, 197, 94, .15);  color: var(--green-open); }
+    .status-pill.closed{ background: rgba(239, 68, 68, .15);  color: var(--red-closed); }
 
-        .status-pill.open .status-dot { background: var(--green-open); }
-        .status-pill.closed .status-dot { background: var(--red-closed); }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .status-pill.open  .status-dot { background: var(--green-open); }
+    .status-pill.closed .status-dot { background: var(--red-closed); }
 
-        .hero h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            line-height: 1.25;
-            margin-bottom: 1rem;
-        }
+    .hero h2 { font-size: 2.2rem; font-weight: 800; line-height: 1.25; margin-bottom: 1rem; }
+    .hero h2 span { color: var(--primary-red); }
+    .hero p { color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; }
 
-        .hero h2 span { color: var(--primary-red); }
+    .btn-whatsapp {
+        background: var(--whatsapp-green);
+        color: #fff;
+        padding: .9rem 1.8rem;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, .3);
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, .45); }
 
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
+    /* ---------- Stats ---------- */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+        max-width: 900px;
+        margin: 1rem auto 3rem;
+        padding: 0 5%;
+    }
 
-        .btn-whatsapp {
-            background: var(--whatsapp-green);
-            color: #fff;
-            padding: 0.9rem 1.8rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-        }
+    .stat-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        padding: 1.2rem;
+        text-align: center;
+    }
 
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            max-width: 900px;
-            margin: 1rem auto 3rem;
-            padding: 0 5%;
-        }
+    .stat-number { font-size: 1.8rem; font-weight: 800; color: var(--primary-red); }
+    .stat-label { font-size: .85rem; color: var(--text-muted); }
 
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 1.2rem;
-            text-align: center;
-        }
+    /* ---------- Browser Mockup ---------- */
+    .browser-mockup { max-width: 900px; margin: 2rem auto; padding: 0 5%; }
 
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary-red);
-        }
+    .browser-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+    }
 
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
+    .browser-bar {
+        background: var(--bg-secondary);
+        padding: .8rem 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+    }
 
-        /* Browser Mockup Section (Serviços em Abas) */
-        .browser-mockup {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 5%;
-        }
+    .dots { display: flex; gap: 6px; margin-bottom: .6rem; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-1 { background: #ff5f56; }
+    .dot-2 { background: #ffbd2e; }
+    .dot-3 { background: #27c93f; }
 
-        .browser-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
+    .browser-tabs {
+        display: flex;
+        gap: 4px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    .browser-tabs::-webkit-scrollbar { display: none; }
 
-        .browser-bar {
-            background: var(--bg-secondary);
-            padding: 0.8rem 1rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
+    .tab-btn {
+        background: var(--tab-inactive);
+        color: var(--text-muted);
+        border: none;
+        padding: .6rem 1rem;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        font-size: .85rem;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: background-color .2s ease, color .2s ease;
+    }
 
-        .dots {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 0.6rem;
-        }
+    .tab-btn:hover { color: var(--text-main); }
 
-        .dot { width: 10px; height: 10px; border-radius: 50%; }
-        .dot-1 { background: #ff5f56; }
-        .dot-2 { background: #ffbd2e; }
-        .dot-3 { background: #27c93f; }
+    .tab-btn.active {
+        background: var(--bg-card);
+        color: var(--primary-red);
+    }
 
-        .browser-tabs {
-            display: flex;
-            gap: 4px;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
+    .browser-body { padding: 2rem; min-height: 260px; }
 
-        .browser-tabs::-webkit-scrollbar { display: none; }
+    .tab-content { display: none; }
+    .tab-content.active {
+        display: block;
+        animation: fadeIn .28s ease;
+    }
 
-        .tab-btn {
-            background: var(--tab-inactive);
-            color: var(--text-muted);
-            border: none;
-            padding: 0.6rem 1rem;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
 
-        .tab-btn.active {
-            background: var(--bg-card);
-            color: var(--primary-red);
-        }
+    .tab-content h3 {
+        font-size: 1.4rem;
+        margin-bottom: .8rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
 
-        .browser-body {
-            padding: 2rem;
-            min-height: 220px;
-        }
+    .tab-content p { color: var(--text-muted); margin-bottom: 1.5rem; }
 
-        .tab-content {
-            display: none;
-        }
+    /* ---------- Banner Parcelamento ---------- */
+    .parcelamento-card { max-width: 900px; margin: 2rem auto; padding: 0 5%; }
 
-        .tab-content.active {
-            display: block;
-        }
+    .card-inner {
+        background: linear-gradient(135deg, var(--primary-red) 0%, #800000 100%);
+        border-radius: 16px;
+        padding: 2rem;
+        color: #fff;
+        text-align: center;
+    }
 
-        .tab-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    .card-inner h3 { font-size: 1.6rem; margin-bottom: .5rem; }
+    .card-inner p { color: rgba(255, 255, 255, .88); margin-bottom: 1.2rem; }
 
-        .tab-content p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
+    .btn-white {
+        background: #fff;
+        color: var(--primary-red);
+        padding: .7rem 1.4rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        display: inline-block;
+        transition: transform .2s ease;
+    }
+    .btn-white:hover { transform: translateY(-2px); }
 
-        /* Banner Parcelamento */
-        .parcelamento-card {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 5%;
-        }
+    /* ---------- Contato & Mapa ---------- */
+    .contact-grid {
+        max-width: 900px;
+        margin: 3rem auto;
+        padding: 0 5%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: stretch;
+    }
 
-        .card-inner {
-            background: linear-gradient(135deg, var(--primary-red) 0%, #800000 100%);
-            border-radius: 16px;
-            padding: 2rem;
-            color: #fff;
-            text-align: center;
-        }
+    .contact-info h3 { font-size: 1.5rem; margin-bottom: 1rem; }
 
-        .card-inner h3 { font-size: 1.6rem; margin-bottom: 0.5rem; }
-        .card-inner p { color: rgba(255,255,255,0.85); margin-bottom: 1.2rem; }
+    .info-row { display: flex; gap: 12px; margin-bottom: 1rem; }
+    .info-row i { color: var(--primary-red); font-size: 1.1rem; margin-top: 3px; }
+    .info-row h4 { font-size: .9rem; }
+    .info-row p { font-size: .85rem; color: var(--text-muted); }
 
-        .btn-white {
-            background: #fff;
-            color: var(--primary-red);
-            padding: 0.7rem 1.4rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-block;
-        }
+    .map-wrapper {
+        width: 100%;
+        min-height: 320px;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        background: var(--bg-secondary);
+    }
 
-        /* Contacts & Map */
-        .contact-grid {
-            max-width: 900px;
-            margin: 3rem auto;
-            padding: 0 5%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
+    .map-wrapper iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 320px;
+        border: 0;
+    }
 
-        .contact-info h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+    /* ---------- WhatsApp Flutuante ---------- */
+    .whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+        background: var(--whatsapp-green);
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
+        z-index: 1000;
+        text-decoration: none;
+        transition: transform .2s ease;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
 
-        .info-row {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 1rem;
-        }
+    /* ---------- Responsivo ---------- */
+    @media (max-width: 768px) {
+        .contact-grid { grid-template-columns: 1fr; }
+        .hero h2 { font-size: 1.8rem; }
+        .browser-body { padding: 1.2rem; }
+        .browser-body { min-height: 300px; }
+    }
+</style>
+</head>
+<body>
 
-        .info-row i {
-            color: var(--primary-red);
+<!-- ================= HEADER ================= -->
+<header>
+    <div class="logo-box">
+        <div class="logo-badge">CD</div>
+        <div class="logo-info">
+            <h1>Camargo Despachante</h1>
+            <span>SSP-90775 &bull; Bairro do Limão</span>
+        </div>
+    </div>
+    <button class="theme-toggle-btn" id="themeBtn" type="button" aria-label="Alternar tema claro/escuro">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+    </button>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+    <div class="status-container">
+        <i class="fa-solid fa-shield-halved" style="color: var(--primary-red);"></i> SSP-90775
+        <span class="status-pill closed" id="statusPill">
+            <span class="status-dot"></span>
+            <span id="statusLabel">Carregando...</span>
+        </span>
+    </div>
+
+    <h2>Soluções veiculares <br><span>sem filas e sem complicação.</span></h2>
+    <p>Transferências, licenciamento, emplacamento Mercosul e regularização de débitos. Atendimento especializado na Zona Norte com total transparência e segurança.</p>
+
+    <a class="btn-whatsapp"
+       href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento."
+       target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp"></i> Fazer Orçamento Grátis
+    </a>
+</section>
+
+<!-- ================= STATS ================= -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-number">12x</div>
+        <div class="stat-label">no cartão de crédito</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Processos Digitais</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">SSP-90775</div>
+        <div class="stat-label">Credenciado Oficial</div>
+    </div>
+</div>
+
+<!-- ================= ABAS DE SERVIÇOS ================= -->
+<section class="browser-mockup">
+    <div class="browser-box">
+        <div class="browser-bar">
+            <div class="dots">
+                <div class="dot dot-1"></div>
+                <div class="dot dot-2"></div>
+                <div class="dot dot-3"></div>
+            </div>
+
+            <div class="browser-tabs" role="tablist" aria-label="Serviços">
+                <button class="tab-btn active" type="button" role="tab" data-tab="tab-1" aria-selected="true">
+                    <i class="fa-solid fa-right-left"></i> Transferência
+                </button>
+                <button class="tab-btn" type="button" role="tab" data-tab="tab-2" aria-selected="false">
+                    <i class="fa-solid fa-id-card"></i> Licenciamento
+                </button>
+                <button class="tab-btn" type="button" role="tab" data-tab="tab-3" aria-selected="false">
+                    <i class="fa-solid fa-car-rear"></i> Placas Mercosul
+                </button>
+                <button class="tab-btn" type="button" role="tab" data-tab="tab-4" aria-selected="false">
+                    <i class="fa-solid fa-unlock"></i> Sinistro
+                </button>
+            </div>
+        </div>
+
+        <div class="browser-body">
+
+            <div id="tab-1" class="tab-content active" role="tabpanel">
+                <h3><i class="fa-solid fa-right-left" style="color: var(--primary-red);"></i> Transferência de Veículo</h3>
+                <p>Transferimos a propriedade do seu veículo junto ao Detran SP sem complicação. Atendimento rápido e sem necessidade de pegar filas.</p>
+                <a class="btn-whatsapp"
+                   href="https://wa.me/5511955400139?text=Quero%20fazer%20transfer%C3%AAncia."
+                   target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-whatsapp"></i> Solicitar no WhatsApp
+                </a>
+            </div>
+
+            <div id="tab-2" class="tab-content" role="tabpanel">
+                <h3><i class="fa-solid fa-id-card" style="color: var(--primary-red);"></i> Licenciamento Anual (CRLV-e)</h3>
+                <p>Emissão rápida do seu documento anual do veículo. Receba o PDF digital atualizado direto no seu celular.</p>
+                <a class="btn-whatsapp"
+                   href="https://wa.me/5511955400139?text=Quero%20fazer%20licenciamento."
+                   target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-whatsapp"></i> Solicitar Licenciamento
+                </a>
+            </div>
+
+            <div id="tab-3" class="tab-content" role="tabpanel">
+                <h3><i class="fa-solid fa-car-rear" style="color: var(--primary-red);"></i> Emplacamento e Placas Mercosul</h3>
+                <p>Primeira placa para veículos novos e atualização para o novo padrão Mercosul com rapidez garantida.</p>
+                <a class="btn-whatsapp"
+                   href="https://wa.me/5511955400139?text=Quero%20informa%C3%A7%C3%B5es%20sobre%20placas."
+                   target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-whatsapp"></i> Solicitar Placa
+                </a>
+            </div>
+
+            <div id="tab-4" class="tab-content" role="tabpanel">
+                <h3><i class="fa-solid fa-unlock" style="color: var(--primary-red);"></i> Desbloqueio de Sinistro e Restrições</h3>
+                <p>Regularização e desimpedimento de veículos com histórico de sinistro ou restrições administrativas.</p>
+                <a class="btn-whatsapp"
+                   href="https://wa.me/5511955400139?text=Preciso%20desbloquear%20sinistro."
+                   target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-whatsapp"></i> Consultar Desbloqueio
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ================= PARCELAMENTO ================= -->
+<section class="parcelamento-card">
+    <div class="card-inner">
+        <h3>Parcele Débitos em até 12x</h3>
+        <p>Parcelamos IPVA, multas e licenciamento em até 12 vezes no cartão de crédito.</p>
+        <a class="btn-white"
+           href="https://wa.me/5511955400139?text=Quero%20simular%20o%20parcelamento%20em%2012x."
+           target="_blank" rel="noopener noreferrer">Simular Parcelamento</a>
+    </div>
+</section>
+
+<!-- ================= CONTATO + MAPA ================= -->
+<section class="contact-grid">
+    <div class="contact-info">
+        <h3>Onde Estamos</h3>
+
+        <div class="info-row">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+                <h4>Endereço</h4>
+                <p>Av. Deputado Emílio Carlos, 2369 - Vila Santa Maria (Limão), São Paulo - SP, CEP 02721-200</p>
+            </div>
+        </div>
+
+        <div class="info-row">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+                <h4>Telefones</h4>
+                <p>WhatsApp: (11) 95540-0139<br>Fixo: (11) 3854-8052</p>
+            </div>
+        </div>
+
+        <div class="info-row">
+            <i class="fa-solid fa-clock"></i>
+            <div>
+                <h4>Horários de Atendimento</h4>
+                <p>Segunda a Quinta: 09:00h às 18:00h<br>Sexta-feira: 09:00h às 17:00h<br>Sábado e Domingo: Fechado</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="map-wrapper">
+        <iframe
+            title="Localização Camargo Despachante no Google Maps"
+            src="https://maps.google.com/maps?q=Av.%20Deputado%20Em%C3%ADlio%20Carlos%2C%202369%20-%20Vila%20Santa%20Maria%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2002721-200&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
+<!-- ================= BOTÃO FLUTUANTE ================= -->
+<a class="whatsapp-float"
+   href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Vim%20pelo%20site."
+   target="_blank" rel="noopener noreferrer"
+   title="Falar no WhatsApp" aria-label="Falar no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+/* =========================================================
+   1. TEMA CLARO / ESCURO (com persistência)
+   ========================================================= */
+(function () {
+    const themeBtn  = document.getElementById('themeBtn');
+    const themeIcon = document.getElementById('themeIcon');
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        themeIcon.className = (theme === 'dark') ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        try { localStorage.setItem('cd-theme', theme); } catch (e) {}
+    }
+
+    let saved = null;
+    try { saved = localStorage.getItem('cd-theme'); } catch (e) {}
+
+    const prefersDark = window.matchMedia &&
+                        window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    applyTheme(saved || (prefersDark ? 'dark' : 'light'));
+
+    themeBtn.addEventListener('click', function () {
+        const current = document.documentElement.getAttribute('data-theme');
+        applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+})();
+
+/* =========================================================
+   2. STATUS ABERTO / FECHADO EM TEMPO REAL
+   Seg–Qui: 09:00–18:00 | Sex: 09:00–17:00 | Sáb/Dom: fechado
+   ========================================================= */
+(function () {
+    const pill  = document.getElementById('statusPill');
+    const label = document.getElementById('statusLabel');
+
+    function ucolor: var(--primary-red);
             font-size: 1.1rem;
             margin-top: 3px;
         }
