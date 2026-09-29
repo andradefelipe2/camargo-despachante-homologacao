@@ -1,382 +1,318 @@
+```html
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camargo Despachante | SSP-90775 - Soluções Automotivas Rápidas e Descomplicadas</title>
+    <title>Camargo Despachante | Credenciado SSP-90775 - Bairro do Limão, SP</title>
     
-    <!-- Google Fonts & Font Awesome Icons -->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#dc2626',
+                            darkRed: '#991b1b',
+                            accent: '#10b981',
+                            whatsapp: '#25d366',
+                            darkBg: '#0f172a',
+                            darkCard: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- AOS CSS (Animações ao rolar) -->
+    <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* Variables & Reset */
-        :root {
-            --primary: #d32f2f;
-            --primary-dark: #9a0007;
-            --secondary: #111827;
-            --light-bg: #f9fafb;
-            --card-bg: #ffffff;
-            --text-color: #374151;
-            --text-light: #6b7280;
-            --accent-green: #25d366;
-            --transition: all 0.3s ease-in-out;
+        /* Custom Animations & Fine Tuning */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .whatsapp-pulse {
+            animation: pulse-ring 2s infinite;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
+        /* Glassmorphism Effect */
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
-        body {
-            background-color: var(--light-bg);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(17, 24, 39, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
         }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .dark ::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
         }
-
-        .logo-img {
-            width: 45px;
-            height: 45px;
-            background: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            color: var(--primary);
-            border: 2px solid var(--primary);
+        ::-webkit-scrollbar-thumb {
+            background: #dc2626;
+            border-radius: 4px;
         }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 min-h-screen flex flex-col justify-between">
 
-        .logo-text {
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav bg-white/80 dark:bg-slate-900/80 border-b border-gray-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand / Logo -->
+            <a href="#inicio" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-xl bg-brand-red text-white flex items-center justify-center font-extrabold text-xl shadow-lg shadow-red-500/30 group-hover:scale-105 transition-transform duration-300">
+                    CD
+                </div>
+                <div>
+                    <span class="block text-lg font-bold leading-tight tracking-tight text-slate-900 dark:text-white">
+                        CAMARGO <span class="text-brand-red">DESPACHANTE</span>
+                    </span>
+                    <span class="block text-xs font-semibold text-slate-500 dark:text-slate-400">
+                        CREDENCIADO SSP-90775
+                    </span>
+                </div>
+            </a>
 
-        .logo-text span {
-            font-size: 0.8rem;
-            display: block;
-            color: #9ca3af;
-            font-weight: 400;
-        }
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#inicio" class="hover:text-brand-red dark:hover:text-red-400 transition-colors">Início</a>
+                <a href="#servicos" class="hover:text-brand-red dark:hover:text-red-400 transition-colors">Serviços</a>
+                <a href="#parcelamento" class="hover:text-brand-red dark:hover:text-red-400 transition-colors">Parcelamento 12x</a>
+                <a href="#contato" class="hover:text-brand-red dark:hover:text-red-400 transition-colors">Contato & Mapa</a>
+            </nav>
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+            <!-- Actions: Theme Switcher & WhatsApp CTA -->
+            <div class="flex items-center gap-3">
+                <!-- Theme Toggle Button -->
+                <button id="themeToggleBtn" aria-label="Alternar tema" class="w-10 h-10 rounded-xl bg-gray-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-gray-200 dark:hover:bg-slate-700 flex items-center justify-center transition-all duration-300 border border-gray-200 dark:border-slate-700">
+                    <i id="themeIconSun" class="fa-solid fa-sun text-amber-500 text-lg hidden"></i>
+                    <i id="themeIconMoon" class="fa-solid fa-moon text-indigo-400 text-lg"></i>
+                </button>
 
-        nav a {
-            color: #f3f4f6;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
+                <!-- WhatsApp Top CTA Button -->
+                <a href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 bg-brand-red hover:bg-brand-darkRed text-white px-4 py-2.5 rounded-xl font-semibold text-sm shadow-md shadow-red-500/20 hover:shadow-red-500/40 transition-all duration-300 transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Falar com Despachante</span>
+                </a>
 
-        nav a:hover {
-            color: var(--primary);
-        }
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" aria-label="Abrir Menu" class="md:hidden w-10 h-10 rounded-xl bg-gray-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center border border-gray-200 dark:border-slate-700">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
 
-        .btn-header {
-            background: var(--primary);
-            color: #fff;
-            padding: 0.6rem 1.2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="mobile-nav-link block py-2 px-3 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-slate-800">Início</a>
+            <a href="#servicos" class="mobile-nav-link block py-2 px-3 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-slate-800">Serviços</a>
+            <a href="#parcelamento" class="mobile-nav-link block py-2 px-3 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-slate-800">Parcelamento 12x</a>
+            <a href="#contato" class="mobile-nav-link block py-2 px-3 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-slate-800">Contato & Mapa</a>
+            <a href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-brand-whatsapp text-white w-full py-3 rounded-xl font-bold text-center mt-2 shadow-md">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                <span>Chamar no WhatsApp</span>
+            </a>
+        </div>
+    </header>
 
-        .btn-header:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
+    <!-- Hero Section -->
+    <section id="inicio" class="pt-32 pb-16 md:pt-40 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Hero Left Content -->
+            <div class="lg:col-span-7 space-y-6" data-aos="fade-right">
+                
+                <!-- Badges Container: SSP Credential + Live Opening Status -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <!-- SSP Badge -->
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-red-100 text-red-800 dark:bg-red-950/80 dark:text-red-300 border border-red-200 dark:border-red-800/50">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        SSP-90775
+                    </span>
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, rgba(17, 24, 39, 0.9) 0%, rgba(0, 0, 0, 0.8) 100%), 
-                        url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            padding: 8rem 5% 4rem;
-            color: #fff;
-        }
+                    <!-- Dynamic Opening Status Badge -->
+                    <span id="businessStatusBadge" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-300 border">
+                        <span id="statusPing" class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5"></span>
+                        </span>
+                        <span id="statusText">Verificando horário...</span>
+                    </span>
+                </div>
 
-        .hero-content {
-            max-width: 700px;
-        }
+                <!-- Main Heading -->
+                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+                    Despachante Veicular em SP com <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-500">Agilidade e Segurança</span>
+                </h1>
 
-        .badge {
-            background: rgba(211, 47, 47, 0.2);
-            border: 1px solid var(--primary);
-            color: #ff8a80;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-        }
+                <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+                    Localizado no bairro do Limão, o <strong>Camargo Despachante</strong> descomplica toda a burocracia do seu veículo. Regularize licenciamentos, transferências, placas e débitos em um só lugar.
+                </p>
 
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                    <a href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Gostaria%20de%20atendimento%20para%20meu%20ve%C3%ADculo." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 bg-brand-whatsapp hover:bg-emerald-600 text-white font-bold px-7 py-4 rounded-xl shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all duration-300 text-base transform hover:-translate-y-0.5">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>Atendimento Rápido no WhatsApp</span>
+                    </a>
+                    
+                    <a href="#servicos" class="inline-flex items-center justify-center gap-2 bg-white dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold px-6 py-4 rounded-xl border border-gray-200 dark:border-slate-700 shadow-sm transition-all duration-300 text-base">
+                        <span>Ver Serviços</span>
+                        <i class="fa-solid fa-arrow-down text-xs"></i>
+                    </a>
+                </div>
 
-        .hero h1 span {
-            color: var(--primary);
-        }
+                <!-- Features Highlight List -->
+                <div class="pt-6 border-t border-gray-200 dark:border-slate-800 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs font-semibold text-slate-600 dark:text-slate-400">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-brand-red text-sm"></i>
+                        <span>Atendimento Online</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-brand-red text-sm"></i>
+                        <span>Parcelamento em 12x</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-brand-red text-sm"></i>
+                        <span>Emissão do CRLV-e</span>
+                    </div>
+                </div>
+            </div>
 
-        .hero p {
-            font-size: 1.15rem;
-            color: #d1d5db;
-            margin-bottom: 2rem;
-        }
+            <!-- Hero Right Card Graphic -->
+            <div class="lg:col-span-5" data-aos="fade-left" data-aos-delay="200">
+                <div class="relative mx-auto max-w-md bg-gradient-to-b from-red-600 to-red-800 rounded-3xl p-6 sm:p-8 text-white shadow-2xl shadow-red-900/30 overflow-hidden">
+                    <!-- Subtle Background SVG Deco -->
+                    <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
 
-        .hero-btns {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+                    <div class="flex justify-between items-start mb-8 relative z-10">
+                        <div>
+                            <span class="text-xs uppercase tracking-widest text-red-200 font-semibold">Credenciamento Oficial</span>
+                            <h3 class="text-2xl font-extrabold tracking-tight mt-1">SSP-90775</h3>
+                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-xl font-black">
+                            CD
+                        </div>
+                    </div>
 
-        .btn-primary {
-            background: var(--accent-green);
-            color: #fff;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            transition: var(--transition);
-        }
+                    <div class="space-y-4 relative z-10">
+                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-white text-red-600 flex items-center justify-center font-bold text-lg shrink-0">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Descomplique sem Filas</h4>
+                                <p class="text-xs text-red-100">Processamos a documentação do seu carro ou moto de forma 100% segura.</p>
+                            </div>
+                        </div>
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-        }
+                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-white text-red-600 flex items-center justify-center font-bold text-lg shrink-0">
+                                <i class="fa-solid fa-credit-card"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Facilidade no Pagamento</h4>
+                                <p class="text-xs text-red-100">Parcele débitos (IPVA, Multas e Licenciamento) no cartão em até 12x.</p>
+                            </div>
+                        </div>
+                    </div>
 
-        .btn-secondary {
-            background: transparent;
-            color: #fff;
-            border: 2px solid #fff;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
+                    <!-- Contact Direct Badge -->
+                    <div class="mt-8 pt-6 border-t border-white/20 text-center relative z-10">
+                        <p class="text-xs text-red-100 mb-1">Localização no Bairro do Limão:</p>
+                        <p class="text-sm font-semibold text-white">Av. Dep. Emílio Carlos, 2369 - SP</p>
+                    </div>
+                </div>
+            </div>
 
-        .btn-secondary:hover {
-            background: #fff;
-            color: var(--secondary);
-        }
+        </div>
+    </section>
 
-        /* Stats Animated Section */
-        .stats {
-            background: #fff;
-            padding: 3rem 5%;
-            margin-top: -50px;
-            position: relative;
-            z-index: 10;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
+    <!-- Interactive Services Section (Browser Mockup Style) -->
+    <section id="servicos" class="py-16 md:py-24 bg-gray-100/70 dark:bg-slate-800/50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
+                <span class="text-brand-red font-bold text-xs uppercase tracking-widest">Nossos Serviços</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+                    Navegue pelas nossas Soluções Veiculares
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base">
+                    Clique nas abas do navegador abaixo para explorar cada serviço em detalhe, verificar a documentação necessária e solicitar atendimento direto.
+                </p>
+            </div>
 
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            font-weight: 800;
-        }
+            <!-- BROWSER WINDOW MOCKUP CONTAINER -->
+            <div class="max-w-5xl mx-auto bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-slate-800 overflow-hidden transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                
+                <!-- Browser Title Bar / Chrome -->
+                <div class="bg-gray-200/80 dark:bg-slate-950/80 px-4 py-3 flex items-center justify-between border-b border-gray-300 dark:border-slate-800">
+                    <!-- Window Controls (Mac Style) -->
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                    </div>
 
-        .stat-item p {
-            color: var(--text-light);
-            font-weight: 500;
-        }
+                    <!-- Address Bar -->
+                    <div class="flex-1 max-w-xl mx-4 bg-white dark:bg-slate-800 px-4 py-1.5 rounded-lg border border-gray-300 dark:border-slate-700 text-xs font-mono text-slate-500 dark:text-slate-400 flex items-center gap-2 truncate shadow-inner">
+                        <i class="fa-solid fa-lock text-emerald-500 text-[10px]"></i>
+                        <span class="truncate">https://camargodespachante.com.br/servicos/<span id="browserUrlPath" class="text-brand-red font-semibold">transferencia</span></span>
+                    </div>
 
-        /* Services Section */
-        .services {
-            padding: 6rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+                    <!-- Window Indicator -->
+                    <div class="hidden sm:flex items-center gap-2 text-slate-400 dark:text-slate-600 text-xs">
+                        <i class="fa-solid fa-window-maximize"></i>
+                    </div>
+                </div>
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
+                <!-- Browser Tabs Header Bar -->
+                <div class="bg-gray-100 dark:bg-slate-950 px-2 pt-2 flex items-center gap-1 overflow-x-auto border-b border-gray-200 dark:border-slate-800 scrollbar-none" id="tabHeaders">
+                    
+                    <button onclick="switchTab('transferencia')" id="tab-transferencia" class="service-tab-btn flex items-center gap-2 px-4 py-2.5 rounded-t-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border-t border-x border-transparent">
+                        <i class="fa-solid fa-right-left text-brand-red"></i>
+                        <span>Transferência</span>
+                    </button>
 
-        .section-header h2 {
-            font-size: 2.2rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
+                    <button onclick="switchTab('licenciamento')" id="tab-licenciamento" class="service-tab-btn flex items-center gap-2 px-4 py-2.5 rounded-t-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border-t border-x border-transparent">
+                        <i class="fa-solid fa-id-card text-brand-red"></i>
+                        <span>Licenciamento</span>
+                    </button>
 
-        .section-header p {
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+                    <button onclick="switchTab('emplacamento')" id="tab-emplacamento" class="service-tab-btn flex items-center gap-2 px-4 py-2.5 rounded-t-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border-t border-x border-transparent">
+                        <i class="fa-solid fa-car-rear text-brand-red"></i>
+                        <span>Placas Mercosul</span>
+                    </button>
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
+                    <button onclick="switchTab('sinistro')" id="tab-sinistro" class="service-tab-btn flex items-center gap-2 px-4 py-2.5 rounded-t-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border-t border-x border-transparent">
+                        <i class="fa-solid fa-lock-open text-brand-red"></i>
+                        <span>Desbloqueio Sinistro</span>
+                    </button>
 
-        .service-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid #e5e7eb;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-            border-color: var(--primary);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(211, 47, 47, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .service-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-        }
-
-        .service-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Highlight Section - Parcelamento */
-        .highlight-banner {
-            background: linear-gradient(135deg, var(--secondary) 0%, #1f2937 100%);
-            color: #fff;
-            padding: 4rem 5%;
-            border-radius: 24px;
-            max-width: 1200px;
-            margin: 2rem auto 6rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .highlight-text h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-text span {
-            color: var(--accent-green);
-        }
-
-        /* Contact & Location Section */
-        .contact-section {
-            background: #fff;
-            padding: 6rem 5%;
-        }
-
-        .contact-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
-        }
-
-        .info-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        .info-item i {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-top: 4px;
-        }
-
-        .info-item h4 {
-            font-size: 1rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .info-item p {
-            color: var(--text-light);
+                    <button onclick="switchTab('parcelamento')" id="tab-parcelamento" class="service-tab-btn flex items-center gap-2 px-4 py-2.5 rounded-t-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border-t border-x border-transparent">
+                        <i class="fa-solid fa-credit-card text-brand-red"></i>
+         text-light);
             font-size: 0.95rem;
         }
 
