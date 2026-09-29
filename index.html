@@ -386,216 +386,35 @@
         }
 
         let saved = null;
-        try { saved = localStorage.getItem('cd-themeckup">
-    <div class="browser-box">
-        <div class="browser-bar">
-            <div class="dots">
-                <div class="dot dot-1"></div><div class="dot dot-2"></div><div class="dot dot-3"></div>
-            </div>
-            <!-- Use data-tab em cada botão -->
-            <div class="browser-tabs" id="tabsContainer" role="tablist">
-                <button class="tab-btn active" type="button" role="tab" data-tab="tab-1" aria-selected="true">
-                    <i class="fa-solid fa-right-left"></i> Transferência
-                </button>
-                <button class="tab-btn" type="button" role="tab" data-tab="tab-2" aria-selected="false">
-                    <i class="fa-solid fa-id-card"></i> Licenciamento
-                </button>
-                <button class="tab-btn" type="button" role="tab" data-tab="tab-3" aria-selected="false">
-                    <i class="fa-solid fa-car-rear"></i> Placas Mercosul
-                </button>
-                <button class="tab-btn" type="button" role="tab" data-tab="tab-4" aria-selected="false">
-                    <i class="fa-solid fa-unlock"></i> Sinistro
-                </button>
-            </div>
-        </div>
+        try { saved = localStorage.getItem('cd-theme'); } catch (e) {}
 
-        <div class="browser-body">
-            <div id="tab-1" class="tab-content active" role="tabpanel">
-                <h3><i class="fa-solid fa-right-left" style="color: var(--primary-red);"></i> Transferência de Veículo</h3>
-                <p>Transferimos a propriedade do seu veículo junto ao Detran SP sem complicação. Atendimento rápido e sem necessidade de pegar filas.</p>
-                <a class="btn-whatsapp" href="https://wa.me/5511955400139?text=Quero%20fazer%20transfer%C3%AAncia." target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp"></i> Solicitar no WhatsApp
-                </a>
-            </div>
+        const prefersDark = window.matchMedia &&
+                            window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-            <div id="tab-2" class="tab-content" role="tabpanel">
-                <h3><i class="fa-solid fa-id-card" style="color: var(--primary-red);"></i> Licenciamento Anual (CRLV-e)</h3>
-                <p>Emissão rápida do seu documento anual do veículo. Receba o PDF digital atualizado direto no seu celular.</p>
-                <a class="btn-whatsapp" href="https://wa.me/5511955400139?text=Quero%20fazer%20licenciamento." target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp"></i> Solicitar Licenciamento
-                </a>
-            </div>
+        apply(saved || (prefersDark ? 'dark' : 'light'));
 
-            <div id="tab-3" class="tab-content" role="tabpanel">
-                <h3><i class="fa-solid fa-car-rear" style="color: var(--primary-red);"></i> Emplacamento e Placas Mercosul</h3>
-                <p>Primeira placa para veículos novos e atualização para o novo padrão Mercosul com rapidez garantida.</p>
-                <a class="btn-whatsapp" href="https://wa.me/5511955400139?text=Quero%20informa%C3%A7%C3%B5es%20sobre%20placas%20Mercosul." target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp"></i> Solicitar Placa
-                </a>
-            </div>
-
-            <div id="tab-4" class="tab-content" role="tabpanel">
-                <h3><i class="fa-solid fa-unlock" style="color: var(--primary-red);"></i> Desbloqueio de Sinistro e Restrições</h3>
-                <p>Regularização e desimpedimento de veículos com histórico de sinistro ou restrições administrativas.</p>
-                <a class="btn-whatsapp" href="https://wa.me/5511955400139?text=Preciso%20desbloquear%20sinistro." target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp"></i> Consultar Desbloqueio
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="parcelamento-card">
-    <div class="card-inner">
-        <h3>Parcele Débitos em até 12x</h3>
-        <p>Parcelamos IPVA, multas e licenciamento em até 12 vezes no cartão de crédito.</p>
-        <a class="btn-white" href="https://wa.me/5511955400139?text=Quero%20simular%20o%20parcelamento%20em%2012x." target="_blank" rel="noopener noreferrer">Simular Parcelamento</a>
-    </div>
-</section>
-
-<section class="contact-grid">
-    <div class="contact-info">
-        <h3>Onde Estamos</h3>
-        <div class="info-row">
-            <i class="fa-solid fa-location-dot"></i>
-            <div><h4>Endereço</h4>
-            <p>Av. Deputado Emílio Carlos, 2369 - Vila Santa Maria (Limão), São Paulo - SP, CEP 02721-200</p></div>
-        </div>
-        <div class="info-row">
-            <i class="fa-solid fa-phone"></i>
-            <div><h4>Telefones</h4>
-            <p>WhatsApp: (11) 95540-0139<br>Fixo: (11) 3854-8052</p></div>
-        </div>
-        <div class="info-row">
-            <i class="fa-solid fa-clock"></i>
-            <div><h4>Horários de Atendimento</h4>
-            <p>Segunda a Quinta: 09:00h às 18:00h<br>Sexta-feira: 09:00h às 17:00h<br>Sábado e Domingo: Fechado</p></div>
-        </div>
-    </div>
-
-    <div class="map-wrapper">
-        <iframe
-            title="Localização Camargo Despachante"
-            src="https://maps.google.com/maps?q=Av.%20Deputado%20Em%C3%ADlio%20Carlos%2C%202369%20-%20Vila%20Santa%20Maria%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2002721-200&t=&z=16&ie=UTF8&iwloc=&output=embed"
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-    </div>
-</section>
-
-<a class="whatsapp-float" href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-</a>
-
-<script>
-(function () {
-    'use strict';
-
-    /* =========================================================
-       1. HORÁRIO DE BRASÍLIA REAL (America/Sao_Paulo)
-       ========================================================= */
-    function getBrasiliaParts() {
-        const fmt = new Intl.DateTimeFormat('en-US', {
-            timeZone: 'America/Sao_Paulo',
-            weekday: 'short',
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false
-        });
-        const parts = fmt.formatToParts(new Date());
-        const map = {};
-        parts.forEach(p => { map[p.type] = p.value; });
-
-        // weekday: Sun, Mon, Tue, Wed, Thu, Fri, Sat
-        const dayMap = { Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6 };
-        const day = dayMap[map.weekday];
-
-        // hour pode vir "24" em alguns browsers → normaliza
-        let hour = parseInt(map.hour, 10);
-        if (hour === 24) hour = 0;
-        const minute = parseInt(map.minute, 10);
-
-        return { day, hour, minute, totalMin: hour * 60 + minute };
-    }
-
-    function updateStoreStatus() {
-        const pill  = document.getElementById('statusPill');
-        const label = document.getElementById('statusLabel');
-        if (!pill || !label) return;
-
-        const { day, totalMin } = getBrasiliaParts();
-
-        const OPEN_SEG_QUI = 9 * 60;   // 09:00
-        const CLOSE_SEG_QUI = 18 * 60; // 18:00
-        const OPEN_SEX = 9 * 60;       // 09:00
-        const CLOSE_SEX = 17 * 60;     // 17:00
-
-        let isOpen = false;
-
-        if (day >= 1 && day <= 4) {
-            isOpen = totalMin >= OPEN_SEG_QUI && totalMin < CLOSE_SEG_QUI;
-        } else if (day === 5) {
-            isOpen = totalMin >= OPEN_SEX && totalMin < CLOSE_SEX;
-        }
-
-        pill.classList.toggle('open', isOpen);
-        pill.classList.toggle('closed', !isOpen);
-        label.textContent = isOpen ? 'Aberto Agora' : 'Loja Fechada';
-    }
-
-    /* =========================================================
-       2. SISTEMA DE ABAS (event delegation - funciona sempre)
-       ========================================================= */
-    function initTabs() {
-        const container = document.getElementById('tabsContainer');
-        if (!container) return;
-
-        const allBtns     = container.querySelectorAll('.tab-btn');
-        const allContents = document.querySelectorAll('.tab-content');
-
-        function activate(tabId, btnEl) {
-            allContents.forEach(function (c) {
-                c.classList.toggle('active', c.id === tabId);
-            });
-            allBtns.forEach(function (b) {
-                const on = (b === btnEl);
-                b.classList.toggle('active', on);
-                b.setAttribute('aria-selected', on ? 'true' : 'false');
-            });
-        }
-
-        // Delegation: 1 listener só, pega cliques em qualquer .tab-btn
-        container.addEventListener('click', function (e) {
-            const btn = e.target.closest('.tab-btn');
-            if (!btn || !container.contains(btn)) return;
-            const tabId = btn.getAttribute('data-tab');
-            if (tabId) activate(tabId, btn);
-        });
-
-        // Navegação por teclado
-        container.addEventListener('keydown', function (e) {
-            const btn = e.target.closest('.tab-btn');
-            if (!btn) return;
-            const arr = Array.from(allBtns);
-            const i = arr.indexOf(btn);
-            let next = null;
-            if (e.key === 'ArrowRight') next = arr[(i + 1) % arr.length];
-            if (e.key === 'ArrowLeft')  next = arr[(i - 1 + arr.length) % arr.length];
-            if (next) { e.preventDefault(); next.focus(); activate(next.getAttribute('data-tab'), next); }
+        btn.addEventListener('click', function () {
+            const cur = document.documentElement.getAttribute('data-theme');
+            apply(cur === 'dark' ? 'light' : 'dark');
         });
     }
 
     /* =========================================================
-       3. TEMA CLARO / ESCURO
+       BOOT
        ========================================================= */
-    function initTheme() {
-        const btn  = document.getElementById('themeBtn');
-        const icon = document.getElementById('themeIcon');
-        if (!btn || !icon) return;
+    function boot() {
+        initTheme();
+        initTabs();
+        updateStoreStatus();
+        setInterval(updateStoreStatus, 30000);
+    }
 
-        function apply(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            icon.className = (theme === 'dark') ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-            try { localStorage.setItem('cd-theme', theme); } catch (e) {}
-        }
-
-        let saved = null;
-        try { saved = localStorage.getItem('cd-theme
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', boot);
+    } else {
+        boot();
+    }
+})();
+</script>
+</body>
+</html>
