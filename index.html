@@ -32,9 +32,57 @@ nav a:hover{color:var(--red)}
 .row b{color:var(--red);display:flex}
 .theme-btn{display:inline-flex;align-items:center;justify-content:center;color:var(--text);background:var(--bg2);border:1px solid var(--line);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1rem}
 .wrap{max-width:900px;margin:0 auto;padding:0 5%}
-.hero{padding:7rem 5% 2.5rem;max-width:900px;margin:0 auto;text-align:center;animation:in .7s ease backwards}
+
+/* ---------- HERO (texto + escudo na mesma caixa) ---------- */
+.hero{padding:7rem 5% 2.5rem;max-width:900px;margin:0 auto;animation:in .7s ease backwards}
 @keyframes in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.status{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:30px;font-size:.85rem;font-weight:600;margin-bottom:1.4rem;box-shadow:var(--sh)}
+.hero-box{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:2rem;
+  align-items:center;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:2.2rem 2rem;
+  box-shadow:var(--sh);
+  position:relative;
+  overflow:hidden;
+}
+.hero-box::before{
+  content:"";
+  position:absolute;inset:0;
+  background:radial-gradient(60% 90% at 100% 50%, rgba(198,40,40,.08), transparent 70%);
+  pointer-events:none;
+}
+.hero-text{text-align:left;position:relative;z-index:1}
+.hero-text h2{font-size:2rem;font-weight:800;line-height:1.2;margin-bottom:1rem}
+.hero-text h2 em{font-style:normal;color:var(--red)}
+.hero-text p{color:var(--muted);margin:0 0 1.6rem;max-width:520px}
+.hero-shield{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.6rem;
+  position:relative;
+  z-index:1;
+}
+.hero-shield svg{
+  width:100%;
+  max-width:230px;
+  height:auto;
+  overflow:visible;
+}
+.shield-cap{
+  font-size:.72rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:600;
+}
+.shield-cap b{color:var(--red);font-variant-numeric:tabular-nums}
+
+.status{display:inline-flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:30px;font-size:.85rem;font-weight:600;margin-bottom:1.4rem}
 .pill{display:inline-flex;align-items:center;gap:6px;padding:.2rem .6rem;border-radius:20px;font-size:.75rem;font-weight:700}
 .pill.open{background:rgba(34,197,94,.15);color:var(--green)}
 .pill.closed{background:rgba(239,68,68,.15);color:#dc2626}
@@ -42,11 +90,19 @@ nav a:hover{color:var(--red)}
 .pill i{width:8px;height:8px;border-radius:50%;background:currentColor}
 .pill.open i{animation:pulse 1.8s ease-out infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}100%{box-shadow:0 0 0 8px rgba(34,197,94,0)}}
-.hero h2{font-size:2.3rem;font-weight:800;line-height:1.2;margin-bottom:1rem}
-.hero h2 em{font-style:normal;color:var(--red)}
-.hero p{color:var(--muted);margin:0 auto 1.8rem;max-width:620px}
+
 .btn{background:var(--wa);color:#04331a;padding:.9rem 1.7rem;border-radius:12px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(37,211,102,.3);transition:transform .25s,box-shadow .25s}
 .btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(37,211,102,.45)}
+
+/* ---------- ESCUDO ---------- */
+.shield-base{fill:none;stroke:var(--line);stroke-width:1.3;stroke-linejoin:round;stroke-linecap:round}
+.shield-lit{fill:none;stroke:url(#shGrad);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round;filter:url(#shGlow)}
+.shield-node{fill:var(--card);stroke:var(--line);stroke-width:1;transition:fill .15s,stroke .15s}
+.shield-node.on{fill:#ef4444;stroke:#ef4444}
+.shield-dot-halo{fill:#ef4444;filter:url(#shBlur);opacity:.55}
+.shield-dot-ring{fill:none;stroke:#ef4444;stroke-width:.9;opacity:.9}
+.shield-dot-core{fill:#fff}
+
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem auto 2.5rem}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.1rem .6rem;text-align:center}
 .stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--red);line-height:1.2;font-variant-numeric:tabular-nums}
@@ -90,7 +146,17 @@ h3.sec{font-size:1.5rem;margin-bottom:1rem}
 footer{border-top:1px solid var(--line);padding:1.8rem 5%;padding-bottom:calc(5.5rem + env(safe-area-inset-bottom,0px));text-align:center;color:var(--muted);font-size:.82rem}
 footer a{color:var(--red);font-weight:600;text-decoration:none}
 .float{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));right:20px;width:56px;height:56px;background:var(--wa);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 15px rgba(0,0,0,.25);z-index:1000;text-decoration:none}
-@media (max-width:768px){nav a{display:none}.contact,.why{grid-template-columns:1fr}.hero h2{font-size:1.8rem}.body{padding:1.2rem}}
+
+@media (max-width:768px){
+  nav a{display:none}
+  .contact,.why{grid-template-columns:1fr}
+  .body{padding:1.2rem}
+  .hero-box{grid-template-columns:1fr;gap:1.6rem;padding:1.6rem 1.3rem;text-align:center}
+  .hero-text{text-align:center}
+  .hero-text p{margin-left:auto;margin-right:auto}
+  .hero-text h2{font-size:1.55rem}
+  .hero-shield svg{max-width:180px}
+}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -111,6 +177,7 @@ footer a{color:var(--red);font-weight:600;text-decoration:none}
 <symbol id="i-nav" viewBox="0 0 24 24"><path d="M3 11 21 3l-8 18-2-8z"/></symbol>
 <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
 </defs></svg>
+
 <header>
   <a class="logo-box" href="#topo" aria-label="Camargo Despachante">
     <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#fff" stroke="#e2e8f0"/><path d="M50 14 84 38 71 79H29L16 38Z" fill="#fff" stroke="#1a1a1a" stroke-width="5" stroke-linejoin="round"/><text x="30" y="60" font-size="34" font-weight="800" fill="#c62828" font-family="Inter,sans-serif">C</text><text x="52" y="66" font-size="28" font-weight="800" font-style="italic" fill="#1a1a1a" font-family="Inter,sans-serif">D</text></svg>
@@ -121,12 +188,69 @@ footer a{color:var(--red);font-weight:600;text-decoration:none}
 </header>
 
 <main id="topo">
+
+<!-- ================= HERO: texto + escudo na mesma caixa ================= -->
 <section class="hero">
-  <div class="status"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> SSP-90775 <span class="pill closed" id="pill"><i></i><span id="pillTxt">Carregando...</span></span></div>
-  <h2>Documento do seu veículo <em>sem fila e sem dor de cabeça.</em></h2>
-  <p>Transferência, licenciamento, emplacamento e desbloqueio de sinistro com quem atende a Zona Norte há mais de 15 anos.</p>
-  <a class="btn" href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg> Fazer orçamento grátis</a>
+  <div class="hero-box">
+    <div class="hero-text">
+      <div class="status"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> SSP-90775 <span class="pill closed" id="pill"><i></i><span id="pillTxt">Carregando...</span></span></div>
+      <h2>Documento do seu veículo <em>sem fila e sem dor de cabeça.</em></h2>
+      <p>Transferência, licenciamento, emplacamento e desbloqueio de sinistro com quem atende a Zona Norte há mais de 15 anos.</p>
+      <a class="btn" href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg> Fazer orçamento grátis</a>
+    </div>
+
+    <div class="hero-shield" aria-hidden="true">
+      <svg viewBox="0 0 100 112">
+        <defs>
+          <linearGradient id="shGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#f87171"/>
+            <stop offset="55%"  stop-color="#ef4444"/>
+            <stop offset="100%" stop-color="#b91c1c"/>
+          </linearGradient>
+          <linearGradient id="shFill" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%"   stop-color="#b91c1c" stop-opacity=".38"/>
+            <stop offset="60%"  stop-color="#ef4444" stop-opacity=".16"/>
+            <stop offset="100%" stop-color="#f87171" stop-opacity=".05"/>
+          </linearGradient>
+          <filter id="shGlow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="1.1" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="shBlur" x="-120%" y="-120%" width="340%" height="340%">
+            <feGaussianBlur stdDeviation="2.6"/>
+          </filter>
+          <mask id="shMask"><rect id="shFillRect" x="0" y="112" width="100" height="0" fill="#fff"/></mask>
+        </defs>
+
+        <polygon points="14,44 14,16 50,8 86,16 86,44 50,104" fill="url(#shFill)" mask="url(#shMask)"/>
+
+        <polyline id="shBase" class="shield-base"
+          points="50,8 14,16 14,44 86,44 86,16 50,8 50,104 86,44 14,16 50,104 86,16 14,44 50,104"/>
+
+        <g id="shNodes">
+          <circle class="shield-node" cx="14" cy="44"  r="1.8"/>
+          <circle class="shield-node" cx="14" cy="16"  r="1.8"/>
+          <circle class="shield-node" cx="50" cy="8"   r="1.8"/>
+          <circle class="shield-node" cx="86" cy="16"  r="1.8"/>
+          <circle class="shield-node" cx="86" cy="44"  r="1.8"/>
+          <circle class="shield-node" cx="50" cy="104" r="1.8"/>
+        </g>
+
+        <g id="shSweep">
+          <polyline id="shLit" class="shield-lit"
+            points="50,8 14,16 14,44 86,44 86,16 50,8 50,104 86,44 14,16 50,104 86,16 14,44 50,104"/>
+          <g id="shDot">
+            <circle class="shield-dot-halo" r="6"/>
+            <circle class="shield-dot-ring" r="3.2"/>
+            <circle class="shield-dot-core" r="1.5"/>
+          </g>
+        </g>
+      </svg>
+      <div class="shield-cap"><b id="shPct">0</b>% de cobertura</div>
+    </div>
+  </div>
 </section>
+<!-- ================================================================ -->
 
 <div class="wrap">
   <div class="stats">
@@ -197,6 +321,7 @@ footer a{color:var(--red);font-weight:600;text-decoration:none}
 'use strict';
 var $=function(id){return document.getElementById(id)};
 
+/* ---------- status aberto/fechado ---------- */
 function status(){
   var p=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()),m={};
   p.forEach(function(x){m[x.type]=x.value});
@@ -206,6 +331,7 @@ function status(){
   $('pillTxt').textContent=open?'Aberto agora':'Fechado agora';
 }
 
+/* ---------- abas de serviços ---------- */
 var tabs=$('tabs'),btns=tabs.querySelectorAll('.tab');
 function act(b){
   btns.forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-selected',on)});
@@ -218,12 +344,14 @@ tabs.addEventListener('keydown',function(e){
   if(n){e.preventDefault();n.focus();act(n)}
 });
 
+/* ---------- tema ---------- */
 var tb=$('themeBtn');
 function theme(t){document.documentElement.setAttribute('data-theme',t);tb.innerHTML='<svg class="ic" aria-hidden="true"><use href="#i-'+(t==='dark'?'sun':'moon')+'"/></svg>';try{localStorage.setItem('cd-theme',t)}catch(e){}}
 var sv=null;try{sv=localStorage.getItem('cd-theme')}catch(e){}
 theme(sv||(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
 tb.addEventListener('click',function(){theme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark')});
 
+/* ---------- contadores ---------- */
 function count(el){
   var n=+el.dataset.n,s=el.dataset.s||'',t0=performance.now();
   (function f(now){var p=Math.min((now-t0)/1400,1);el.textContent=Math.round(n*(1-Math.pow(1-p,4)))+s;if(p<1)requestAnimationFrame(f)})(t0);
@@ -234,6 +362,7 @@ if('IntersectionObserver' in window){
   nums.forEach(function(n){io.observe(n)});
 }else nums.forEach(count);
 
+/* ---------- rota ---------- */
 var ADDR='Av. Deputado Emílio Carlos, 2369 - Vila Santa Maria (Limão), São Paulo - SP',toast=$('toast');
 $('route').addEventListener('click',function(){
   var base='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(ADDR)+'&travelmode=driving';
@@ -245,6 +374,51 @@ $('route').addEventListener('click',function(){
 
 $('yr').textContent=new Date().getFullYear();
 status();setInterval(status,30000);
+
+/* ---------- ESCUDO: varredura do ponto pelas linhas ---------- */
+(function(){
+  var lit=$('shLit'),dot=$('shDot'),sweep=$('shSweep'),pct=$('shPct'),fillRect=$('shFillRect');
+  if(!lit)return;
+  var nodeEls=[].slice.call(document.querySelectorAll('#shNodes .shield-node'));
+  var total=lit.getTotalLength();
+  lit.style.strokeDasharray=total;
+  lit.style.strokeDashoffset=total;
+  var nodes=nodeEls.map(function(el){return{el:el,x:+el.getAttribute('cx'),y:+el.getAttribute('cy')}});
+  var DURATION=5200,HOLD=1400,FADE_OUT=700,FADE_IN=400,CYCLE=DURATION+HOLD+FADE_OUT;
+  function ease(p){return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2}
+  var t0=null;
+  function render(p,op){
+    var e=ease(p),d=e*total;
+    lit.style.strokeDashoffset=total-d;
+    var pt=lit.getPointAtLength(d);
+    dot.setAttribute('transform','translate('+pt.x.toFixed(2)+' '+pt.y.toFixed(2)+')');
+    var h=112*e;
+    fillRect.setAttribute('y',(112-h).toFixed(2));
+    fillRect.setAttribute('height',h.toFixed(2));
+    nodes.forEach(function(n){
+      var perto=Math.hypot(n.x-pt.x,n.y-pt.y)<3.5;
+      n.el.classList.toggle('on',perto||e>.995);
+    });
+    sweep.style.opacity=op;
+    var v=Math.round(e*100);
+    if(pct.textContent!==String(v))pct.textContent=v;
+  }
+  function frame(now){
+    if(t0===null)t0=now;
+    var t=(now-t0)%CYCLE,p,op=1;
+    if(t<DURATION){p=t/DURATION;op=t<FADE_IN?t/FADE_IN:1}
+    else if(t<DURATION+HOLD){p=1}
+    else{p=1;op=1-(t-DURATION-HOLD)/FADE_OUT}
+    render(p,Math.max(0,Math.min(1,op)));
+    requestAnimationFrame(frame);
+  }
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    render(1,1);pct.textContent='100';
+  }else{
+    requestAnimationFrame(frame);
+  }
+})();
+
 })();
 </script>
 </body>
