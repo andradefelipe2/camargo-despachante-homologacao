@@ -2,675 +2,249 @@
 <html lang="pt-BR" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Camargo Despachante | SSP-90775 - Soluções Automotivas</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Camargo Despachante | SSP-90775 - Zona Norte de São Paulo</title>
+<meta name="description" content="Despachante na Zona Norte de São Paulo há mais de 15 anos: transferência, licenciamento, placas Mercosul e desbloqueio de sinistro. Débitos em até 12x no cartão.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Camargo Despachante","telephone":"+5511955400139","email":"camargo.despachante@hotmail.com","address":{"@type":"PostalAddress","streetAddress":"Av. Deputado Emílio Carlos, 2369","addressLocality":"São Paulo","addressRegion":"SP","postalCode":"02721-200","addressCountry":"BR"},"openingHours":["Mo-Th 09:00-18:00","Fr 09:00-17:00"]}</script>
 <style>
-    :root {
-        --bg-body:#f8fafc; --bg-card:#ffffff; --bg-secondary:#f1f5f9;
-        --text-main:#0f172a; --text-muted:#64748b; --border-color:#e2e8f0;
-        --primary-red:#d32f2f; --green-open:#22c55e; --red-closed:#ef4444;
-        --whatsapp-green:#25d366; --header-bg:rgba(255,255,255,.95);
-        --tab-inactive:#e2e8f0; --shadow:0 10px 25px rgba(0,0,0,.05);
-    }
-    [data-theme="dark"] {
-        --bg-body:#0f172a; --bg-card:#1e293b; --bg-secondary:#0f172a;
-        --text-main:#f8fafc; --text-muted:#94a3b8; --border-color:#334155;
-        --header-bg:rgba(15,23,42,.95); --tab-inactive:#334155;
-        --shadow:0 10px 25px rgba(0,0,0,.35);
-    }
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-    html{scroll-behavior:smooth;}
-    body{background:var(--bg-body);color:var(--text-main);line-height:1.6;padding-bottom:2rem;
-         transition:background-color .3s ease,color .3s ease;overflow-x:hidden;}
-
-    /* ============ HEADER ============ */
-    header{position:fixed;top:0;left:0;width:100%;background:var(--header-bg);
-           backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:1000;
-           padding:.8rem 5%;display:flex;justify-content:space-between;align-items:center;
-           border-bottom:1px solid var(--border-color);}
-    .logo-box{display:flex;align-items:center;gap:10px;}
-    .logo-badge{width:38px;height:38px;background:var(--primary-red);color:#fff;border-radius:10px;
-                display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;
-                transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
-    .logo-badge:hover{transform:rotate(-8deg) scale(1.08);}
-    .logo-info h1{font-size:1rem;font-weight:700;line-height:1.2;}
-    .logo-info span{font-size:.75rem;color:var(--text-muted);}
-    .theme-toggle-btn{background:var(--bg-secondary);border:1px solid var(--border-color);
-                      color:var(--text-main);width:38px;height:38px;border-radius:50%;
-                      display:flex;align-items:center;justify-content:center;cursor:pointer;
-                      font-size:1.1rem;transition:transform .3s ease,background .3s ease;}
-    .theme-toggle-btn:hover{transform:scale(1.1) rotate(15deg);}
-
-    /* ============ HERO ============ */
-    .hero{padding:7rem 5% 3rem;max-width:900px;margin:0 auto;text-align:center;}
-    .hero > *{animation:fadeUp .7s ease backwards;}
-    .hero h2{animation-delay:.1s;}
-    .hero p{animation-delay:.2s;}
-    .hero .btn-whatsapp{animation-delay:.3s;}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-
-    .status-container{display:inline-flex;align-items:center;gap:8px;background:var(--bg-card);
-                      border:1px solid var(--border-color);padding:.5rem 1.2rem;border-radius:30px;
-                      font-size:.85rem;font-weight:600;margin-bottom:1.5rem;box-shadow:var(--shadow);
-                      animation:fadeUp .6s ease backwards;}
-    .status-pill{display:inline-flex;align-items:center;gap:6px;padding:.2rem .6rem;
-                 border-radius:20px;font-size:.75rem;text-transform:uppercase;font-weight:700;
-                 transition:background-color .4s ease,color .4s ease;}
-    .status-pill.open{background:rgba(34,197,94,.15);color:var(--green-open);}
-    .status-pill.closed{background:rgba(239,68,68,.15);color:var(--red-closed);}
-    .status-dot{width:8px;height:8px;border-radius:50%;position:relative;}
-    .status-pill.open .status-dot{background:var(--green-open);}
-    .status-pill.closed .status-dot{background:var(--red-closed);}
-    .status-pill.open .status-dot::after{content:'';position:absolute;inset:0;border-radius:50%;
-        background:var(--green-open);animation:pulse 1.8s ease-out infinite;}
-    @keyframes pulse{0%{transform:scale(1);opacity:.7;}100%{transform:scale(2.6);opacity:0;}}
-
-    .hero h2{font-size:2.2rem;font-weight:800;line-height:1.25;margin-bottom:1rem;}
-    .hero h2 span{color:var(--primary-red);position:relative;display:inline-block;}
-    .hero h2 span::after{content:'';position:absolute;left:0;bottom:-2px;width:100%;height:3px;
-        background:var(--primary-red);border-radius:2px;transform:scaleX(0);
-        transform-origin:left;animation:underline 1s ease 1s forwards;}
-    @keyframes underline{to{transform:scaleX(1);}}
-
-    .hero p{color:var(--text-muted);font-size:1rem;margin-bottom:2rem;}
-    .btn-whatsapp{background:var(--whatsapp-green);color:#fff;padding:.9rem 1.8rem;
-                  border-radius:12px;text-decoration:none;font-weight:700;display:inline-flex;
-                  align-items:center;gap:10px;box-shadow:0 4px 15px rgba(37,211,102,.3);
-                  transition:transform .25s ease,box-shadow .25s ease;position:relative;overflow:hidden;}
-    .btn-whatsapp:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(37,211,102,.5);}
-    .btn-whatsapp i{transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
-    .btn-whatsapp:hover i{transform:rotate(-15deg) scale(1.15);}
-    .btn-whatsapp::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-        background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
-        transition:left .6s ease;}
-    .btn-whatsapp:hover::before{left:100%;}
-
-    /* ============ STATS (com contadores) ============ */
-    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;
-                max-width:900px;margin:1rem auto 3rem;padding:0 5%;}
-    .stat-card{background:var(--bg-card);border:1px solid var(--border-color);
-               border-radius:14px;padding:1.2rem;text-align:center;
-               transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease,border-color .3s ease;
-               animation:fadeUp .7s ease backwards;}
-    .stat-card:nth-child(1){animation-delay:.15s;}
-    .stat-card:nth-child(2){animation-delay:.25s;}
-    .stat-card:nth-child(3){animation-delay:.35s;}
-    .stat-card:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 12px 30px rgba(211,47,47,.15);
-                     border-color:var(--primary-red);}
-    .stat-number{font-size:1.8rem;font-weight:800;color:var(--primary-red);
-                 font-variant-numeric:tabular-nums;line-height:1.2;}
-    .stat-number .suffix{font-size:1.2rem;margin-left:2px;}
-    .stat-label{font-size:.85rem;color:var(--text-muted);}
-
-    /* ============ BROWSER MOCKUP ============ */
-    .browser-mockup{max-width:900px;margin:2rem auto;padding:0 5%;}
-    .browser-box{background:var(--bg-card);border:1px solid var(--border-color);
-        border-radius:14px;overflow:hidden;box-shadow:var(--shadow);position:relative;
-        animation:mockupIn .9s cubic-bezier(.22,1,.36,1) backwards;animation-delay:.2s;
-        transition:box-shadow .4s ease,transform .4s ease;}
-    .browser-box:hover{box-shadow:0 20px 45px rgba(211,47,47,.12),0 0 0 1px rgba(211,47,47,.08);}
-    @keyframes mockupIn{from{opacity:0;transform:translateY(40px) scale(.96);}
-        to{opacity:1;transform:translateY(0) scale(1);}}
-    .browser-box::after{content:'';position:absolute;top:0;left:-60%;width:50%;height:100%;
-        background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.25) 50%,transparent 100%);
-        pointer-events:none;z-index:2;animation:shine 1.4s ease 1.1s forwards;}
-    [data-theme="dark"] .browser-box::after{
-        background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.08) 50%,transparent 100%);}
-    @keyframes shine{to{left:130%;}}
-
-    .browser-bar{background:var(--bg-secondary);padding:.8rem 1rem 0;
-                 border-bottom:1px solid var(--border-color);}
-    .dots{display:flex;gap:6px;margin-bottom:.6rem;}
-    .dot{width:10px;height:10px;border-radius:50%;transition:transform .3s ease;}
-    .dot-1{background:#ff5f56;} .dot-2{background:#ffbd2e;} .dot-3{background:#27c93f;}
-    .browser-box:hover .dot-1{transform:scale(1.35) translateY(-2px);}
-    .browser-box:hover .dot-2{transform:scale(1.35) translateY(-2px);transition-delay:.05s;}
-    .browser-box:hover .dot-3{transform:scale(1.35) translateY(-2px);transition-delay:.1s;}
-
-    .browser-tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;position:relative;}
-    .browser-tabs::-webkit-scrollbar{display:none;}
-
-    .tab-btn{background:var(--tab-inactive);color:var(--text-muted);border:none;
-        padding:.6rem 1rem;border-top-left-radius:8px;border-top-right-radius:8px;
-        font-size:.85rem;font-weight:600;cursor:pointer;white-space:nowrap;
-        display:flex;align-items:center;gap:6px;
-        transition:background-color .3s ease,color .3s ease,transform .25s cubic-bezier(.34,1.56,.64,1);
-        position:relative;overflow:hidden;}
-    .tab-btn i{transition:transform .4s cubic-bezier(.34,1.56,.64,1),color .3s ease;}
-    .tab-btn:hover{color:var(--text-main);transform:translateY(-2px);}
-    .tab-btn:hover i{transform:scale(1.2) rotate(-8deg);}
-    .tab-btn.active{background:var(--bg-card);color:var(--primary-red);}
-    .tab-btn.active i{transform:scale(1.15);
-        animation:tabIconPop .5s cubic-bezier(.34,1.56,.64,1);}
-    @keyframes tabIconPop{0%{transform:scale(1);}50%{transform:scale(1.35) rotate(10deg);}
-        100%{transform:scale(1.15) rotate(0);}}
-    .tab-btn::after{content:'';position:absolute;bottom:0;left:50%;
-        transform:translateX(-50%) scaleX(0);width:60%;height:3px;background:var(--primary-red);
-        border-radius:2px 2px 0 0;transition:transform .35s cubic-bezier(.34,1.56,.64,1);}
-    .tab-btn.active::after{transform:translateX(-50%) scaleX(1);}
-
-    .browser-body{padding:2rem;min-height:260px;position:relative;}
-    .tab-content{display:none;}
-    .tab-content.active{display:block;animation:tabContentIn .45s cubic-bezier(.22,1,.36,1);}
-    @keyframes tabContentIn{from{opacity:0;transform:translateY(14px) scale(.99);}
-        to{opacity:1;transform:translateY(0) scale(1);}}
-
-    .tab-content h3{font-size:1.4rem;margin-bottom:.8rem;display:flex;align-items:center;gap:8px;
-        animation:slideInLeft .5s ease backwards;animation-delay:.05s;}
-    .tab-content h3 i{display:inline-block;animation:iconWiggle .7s ease .2s backwards;}
-    @keyframes iconWiggle{0%{transform:rotate(0);}25%{transform:rotate(-14deg) scale(1.15);}
-        75%{transform:rotate(10deg) scale(1.08);}100%{transform:rotate(0) scale(1);}}
-    @keyframes slideInLeft{from{opacity:0;transform:translateX(-14px);}to{opacity:1;transform:translateX(0);}}
-    .tab-content p{color:var(--text-muted);margin-bottom:1.5rem;
-        animation:fadeUp .55s ease .15s backwards;}
-    .tab-content .btn-whatsapp{animation:fadeUp .55s ease .25s backwards;}
-
-    /* ============ PARCELAMENTO ============ */
-    .parcelamento-card{max-width:900px;margin:2rem auto;padding:0 5%;}
-    .card-inner{background:linear-gradient(135deg,var(--primary-red) 0%,#800000 100%);
-        border-radius:16px;padding:2rem;color:#fff;text-align:center;
-        position:relative;overflow:hidden;
-        transition:transform .4s ease,box-shadow .4s ease;
-        animation:fadeUp .7s ease .1s backwards;}
-    .card-inner:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(211,47,47,.35);}
-    .card-inner::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
-        background:radial-gradient(circle,rgba(255,255,255,.15) 0%,transparent 60%);
-        animation:rotateGlow 8s linear infinite;pointer-events:none;}
-    @keyframes rotateGlow{from{transform:rotate(0);}to{transform:rotate(360deg);}}
-    .card-inner h3{font-size:1.6rem;margin-bottom:.5rem;position:relative;z-index:1;}
-    .card-inner p{color:rgba(255,255,255,.88);margin-bottom:1.2rem;position:relative;z-index:1;}
-    .btn-white{background:#fff;color:var(--primary-red);padding:.7rem 1.4rem;border-radius:8px;
-        text-decoration:none;font-weight:700;display:inline-block;position:relative;z-index:1;
-        transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease;}
-    .btn-white:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 10px 25px rgba(0,0,0,.25);}
-
-    /* ============ CONTATO + MAPA ============ */
-    .contact-grid{max-width:900px;margin:3rem auto;padding:0 5%;display:grid;
-        grid-template-columns:1fr 1fr;gap:2rem;align-items:stretch;}
-    .contact-info h3{font-size:1.5rem;margin-bottom:1rem;}
-    .info-row{display:flex;gap:12px;margin-bottom:1rem;transition:transform .3s ease;}
-    .info-row:hover{transform:translateX(6px);}
-    .info-row i{color:var(--primary-red);font-size:1.1rem;margin-top:3px;
-        transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
-    .info-row:hover i{transform:scale(1.3) rotate(-10deg);}
-    .info-row h4{font-size:.9rem;}
-    .info-row p{font-size:.85rem;color:var(--text-muted);}
-
-    /* ========= MAPA + BOTÃO ROTA ========= */
-    .map-wrapper{width:100%;min-height:320px;border-radius:14px;overflow:hidden;
-        border:1px solid var(--border-color);background:var(--bg-secondary);
-        position:relative;transition:transform .4s ease,box-shadow .4s ease;}
-    .map-wrapper:hover{transform:scale(1.01);box-shadow:0 15px 35px rgba(0,0,0,.15);}
-    .map-wrapper iframe{display:block;width:100%;height:100%;min-height:320px;border:0;}
-
-    .btn-route{
-        position:absolute;left:16px;bottom:16px;z-index:5;
-        display:inline-flex;align-items:center;gap:8px;
-        background:var(--primary-red);color:#fff;
-        padding:.7rem 1.2rem;border-radius:30px;border:none;cursor:pointer;
-        font-weight:700;font-size:.85rem;
-        box-shadow:0 6px 20px rgba(211,47,47,.4);
-        transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease,background-color .3s ease;
-        text-decoration:none;
-    }
-    .btn-route:hover{transform:translateY(-3px) scale(1.05);
-        box-shadow:0 12px 28px rgba(211,47,47,.55);}
-    .btn-route:active{transform:translateY(-1px) scale(1.02);}
-    .btn-route i{transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
-    .btn-route:hover i{transform:rotate(-15deg) scale(1.15);}
-    /* animação "ping" pra chamar atenção */
-    .btn-route::before{
-        content:'';position:absolute;inset:0;border-radius:30px;
-        background:var(--primary-red);opacity:.5;
-        animation:routePulse 2.4s ease-out infinite;z-index:-1;
-    }
-    @keyframes routePulse{
-        0%{transform:scale(1);opacity:.5;}
-        100%{transform:scale(1.15);opacity:0;}
-    }
-
-    /* Overlay de "abrindo rota" */
-    .route-toast{
-        position:fixed;left:50%;bottom:100px;transform:translateX(-50%) translateY(20px);
-        background:var(--text-main);color:var(--bg-card);
-        padding:.8rem 1.4rem;border-radius:30px;font-size:.85rem;font-weight:600;
-        display:flex;align-items:center;gap:10px;
-        box-shadow:0 10px 30px rgba(0,0,0,.25);
-        opacity:0;pointer-events:none;z-index:2000;
-        transition:opacity .3s ease,transform .3s ease;
-    }
-    .route-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-    .route-toast .spinner{
-        width:16px;height:16px;border-radius:50%;
-        border:2px solid rgba(255,255,255,.3);border-top-color:#fff;
-        animation:spin .8s linear infinite;
-    }
-    @keyframes spin{to{transform:rotate(360deg);}}
-
-    /* ============ WHATSAPP FLUTUANTE ============ */
-    .whatsapp-float{position:fixed;bottom:20px;right:20px;width:55px;height:55px;
-        background:var(--whatsapp-green);color:#fff;border-radius:50%;
-        display:flex;align-items:center;justify-content:center;font-size:26px;
-        box-shadow:0 4px 15px rgba(0,0,0,.2);z-index:1000;text-decoration:none;
-        transition:transform .3s cubic-bezier(.34,1.56,.64,1);
-        animation:floatIn .6s ease .8s backwards,floatBob 3s ease-in-out 1.5s infinite;}
-    .whatsapp-float:hover{transform:scale(1.15) rotate(8deg);}
-    .whatsapp-float::before{content:'';position:absolute;inset:0;border-radius:50%;
-        background:var(--whatsapp-green);opacity:.5;
-        animation:ringPulse 2s ease-out infinite;z-index:-1;}
-    @keyframes floatIn{from{opacity:0;transform:scale(0) rotate(-180deg);}
-        to{opacity:1;transform:scale(1) rotate(0);}}
-    @keyframes floatBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
-    @keyframes ringPulse{0%{transform:scale(1);opacity:.6;}100%{transform:scale(1.8);opacity:0;}}
-
-    @media (max-width:768px){
-        .contact-grid{grid-template-columns:1fr;}
-        .hero h2{font-size:1.8rem;}
-        .browser-body{padding:1.2rem;min-height:300px;}
-        .tab-btn{padding:.55rem .8rem;font-size:.78rem;}
-        .btn-route{left:12px;bottom:12px;padding:.6rem 1rem;font-size:.78rem;}
-    }
-    @media (prefers-reduced-motion: reduce){
-        *,*::before,*::after{animation-duration:.001ms !important;
-            animation-iteration-count:1 !important;transition-duration:.001ms !important;}
-    }
+:root{--bg:#f8fafc;--card:#fff;--bg2:#f1f5f9;--text:#0f172a;--muted:#5b6b82;--line:#e2e8f0;--red:#c62828;--green:#16a34a;--wa:#25d366;--hdr:rgba(255,255,255,.95);--tab:#e2e8f0;--sh:0 10px 25px rgba(0,0,0,.05);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root:not([data-theme="light"]){}
+[data-theme="dark"]{--bg:#0f172a;--card:#1e293b;--bg2:#0f172a;--text:#f8fafc;--muted:#a3b1c6;--line:#334155;--hdr:rgba(15,23,42,.95);--tab:#334155;--sh:0 10px 25px rgba(0,0,0,.35);--red:#ef5350;--green:#22c55e}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-theme="dark"]){--bg:#0f172a}}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,sans-serif}
+html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+body{background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background .3s,color .3s}
+a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+header{position:fixed;top:0;left:0;width:100%;background:var(--hdr);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:1000;padding:.7rem 5%;padding-top:calc(.7rem + env(safe-area-inset-top,0px));display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+.logo-box{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.logo-box svg{width:42px;height:42px;flex-shrink:0}
+.logo-info h1{font-size:1rem;font-weight:700;line-height:1.2}
+.logo-info span{font-size:.75rem;color:var(--muted)}
+nav{display:flex;gap:1.2rem;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:600}
+nav a:hover{color:var(--red)}
+.ic{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em;flex-shrink:0}
+.float .ic{width:28px;height:28px}
+.tab{display:inline-flex;align-items:center;gap:6px}
+.row b{color:var(--red);display:flex}
+.theme-btn{display:inline-flex;align-items:center;justify-content:center;color:var(--text);background:var(--bg2);border:1px solid var(--line);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1rem}
+.wrap{max-width:900px;margin:0 auto;padding:0 5%}
+.hero{padding:7rem 5% 2.5rem;max-width:900px;margin:0 auto;text-align:center;animation:in .7s ease backwards}
+@keyframes in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.status{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:30px;font-size:.85rem;font-weight:600;margin-bottom:1.4rem;box-shadow:var(--sh)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:.2rem .6rem;border-radius:20px;font-size:.75rem;font-weight:700}
+.pill.open{background:rgba(34,197,94,.15);color:var(--green)}
+.pill.closed{background:rgba(239,68,68,.15);color:#dc2626}
+[data-theme="dark"] .pill.closed{color:#f87171}
+.pill i{width:8px;height:8px;border-radius:50%;background:currentColor}
+.pill.open i{animation:pulse 1.8s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}100%{box-shadow:0 0 0 8px rgba(34,197,94,0)}}
+.hero h2{font-size:2.3rem;font-weight:800;line-height:1.2;margin-bottom:1rem}
+.hero h2 em{font-style:normal;color:var(--red)}
+.hero p{color:var(--muted);margin:0 auto 1.8rem;max-width:620px}
+.btn{background:var(--wa);color:#04331a;padding:.9rem 1.7rem;border-radius:12px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(37,211,102,.3);transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(37,211,102,.45)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem auto 2.5rem}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.1rem .6rem;text-align:center}
+.stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--red);line-height:1.2;font-variant-numeric:tabular-nums}
+.stat span{font-size:.82rem;color:var(--muted)}
+h3.sec{font-size:1.5rem;margin-bottom:1rem}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh);margin:1.5rem 0}
+.bar{background:var(--bg2);padding:.8rem 1rem 0;border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:6px;margin-bottom:.6rem}
+.dots i{width:10px;height:10px;border-radius:50%}
+.dots i:nth-child(1){background:#ff5f56}.dots i:nth-child(2){background:#ffbd2e}.dots i:nth-child(3){background:#27c93f}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:var(--tab);color:var(--muted);border:none;padding:.6rem 1rem;border-radius:8px 8px 0 0;font-size:.85rem;font-weight:600;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent}
+.tab.on{background:var(--card);color:var(--red);border-bottom-color:var(--red)}
+.body{padding:1.8rem}
+.pane{display:none}
+.pane.on{display:block;animation:in .4s ease}
+.pane h4{font-size:1.25rem;margin-bottom:.6rem}
+.pane p{color:var(--muted);margin-bottom:1.3rem}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.2rem}
+.why div{border-left:3px solid var(--red);padding-left:.9rem}
+.why h4{font-size:1rem}
+.why p{font-size:.88rem;color:var(--muted)}
+.about p{color:var(--muted);max-width:66ch;margin-bottom:.8rem}
+.promo{background:linear-gradient(135deg,#c62828,#7f0000);border-radius:16px;padding:2rem;color:#fff;text-align:center;margin:2.5rem 0}
+.promo h3{font-size:1.6rem;margin-bottom:.4rem}
+.promo p{opacity:.9;margin-bottom:1.1rem}
+.btn-w{background:#fff;color:#b71c1c;padding:.7rem 1.4rem;border-radius:8px;text-decoration:none;font-weight:700;display:inline-block;transition:transform .25s}
+.btn-w:hover{transform:translateY(-3px)}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2.5rem 0}
+.row{display:flex;gap:12px;margin-bottom:1rem}
+.row b{font-size:1.1rem;line-height:1.5}
+.row h4{font-size:.9rem}
+.row p,.row a{font-size:.88rem;color:var(--muted)}
+.row a:hover{color:var(--red)}
+.mapcol{display:flex;flex-direction:column}.map{position:relative;flex:1;min-height:320px;border-radius:14px 14px 0 0;overflow:hidden;border:1px solid var(--line);border-bottom:0;background:var(--bg2)}
+.strip{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#c62828;color:#fff;border:none;border-radius:0 0 14px 14px;padding:.95rem;font-weight:700;font-size:.95rem;cursor:pointer;transition:background .25s}.strip:hover{background:#a81f1f}
+.map iframe{display:block;width:100%;height:100%;min-height:340px;border:0}
+.toast{position:fixed;left:50%;bottom:100px;transform:translate(-50%,20px);background:var(--text);color:var(--card);padding:.7rem 1.3rem;border-radius:30px;font-size:.85rem;font-weight:600;opacity:0;pointer-events:none;z-index:2000;transition:.3s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+footer{border-top:1px solid var(--line);padding:1.8rem 5%;padding-bottom:calc(5.5rem + env(safe-area-inset-bottom,0px));text-align:center;color:var(--muted);font-size:.82rem}
+footer a{color:var(--red);font-weight:600;text-decoration:none}
+.float{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));right:20px;width:56px;height:56px;background:var(--wa);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 15px rgba(0,0,0,.25);z-index:1000;text-decoration:none}
+@media (max-width:768px){nav a{display:none}.contact,.why{grid-template-columns:1fr}.hero h2{font-size:1.8rem}.body{padding:1.2rem}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h15l-4-4M20 16H5l4 4"/></symbol>
+<symbol id="i-id" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M5 16c.6-1.4 1.8-2 3-2s2.4.6 3 2M14 10h5M14 14h4"/></symbol>
+<symbol id="i-car" viewBox="0 0 24 24"><path d="M5 16l1.5-5.5A2 2 0 0 1 8.4 9h7.2a2 2 0 0 1 1.9 1.5L19 16M3 16h18v3H3zM7 19v1.5M17 19v1.5"/><circle cx="7.5" cy="16" r=".6"/><circle cx="16.5" cy="16" r=".6"/></symbol>
+<symbol id="i-unlock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+<symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></symbol>
+<symbol id="i-nav" viewBox="0 0 24 24"><path d="M3 11 21 3l-8 18-2-8z"/></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+</defs></svg>
 <header>
-    <div class="logo-box">
-        <div class="logo-badge">CD</div>
-        <div class="logo-info">
-            <h1>Camargo Despachante</h1>
-            <span>SSP-90775 &bull; Bairro do Limão</span>
-        </div>
-    </div>
-    <button class="theme-toggle-btn" id="themeBtn" type="button" aria-label="Alternar tema">
-        <i class="fa-solid fa-moon" id="themeIcon"></i>
-    </button>
+  <a class="logo-box" href="#topo" aria-label="Camargo Despachante">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#fff" stroke="#e2e8f0"/><path d="M50 14 84 38 71 79H29L16 38Z" fill="#fff" stroke="#1a1a1a" stroke-width="5" stroke-linejoin="round"/><text x="30" y="60" font-size="34" font-weight="800" fill="#c62828" font-family="Inter,sans-serif">C</text><text x="52" y="66" font-size="28" font-weight="800" font-style="italic" fill="#1a1a1a" font-family="Inter,sans-serif">D</text></svg>
+    <div class="logo-info"><h1>Camargo Despachante</h1><span>SSP-90775 • Bairro do Limão</span></div>
+  </a>
+  <nav><a href="#servicos">Serviços</a><a href="#quem-somos">Quem somos</a><a href="#contato">Localização</a>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar tema"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></button></nav>
 </header>
 
+<main id="topo">
 <section class="hero">
-    <div class="status-container">
-        <i class="fa-solid fa-shield-halved" style="color: var(--primary-red);"></i> SSP-90775
-        <span class="status-pill closed" id="statusPill">
-            <span class="status-dot"></span>
-            <span id="statusLabel">Carregando...</span>
-        </span>
-    </div>
-
-    <h2>Soluções veiculares <br><span>sem filas e sem complicação.</span></h2>
-    <p>Transferências, licenciamento, emplacamento Mercosul e regularização de débitos. Atendimento especializado na Zona Norte com total transparência e segurança.</p>
-
-    <a class="btn-whatsapp" href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">
-        <i class="fa-brands fa-whatsapp"></i> Fazer Orçamento Grátis
-    </a>
+  <div class="status"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> SSP-90775 <span class="pill closed" id="pill"><i></i><span id="pillTxt">Carregando...</span></span></div>
+  <h2>Documento do seu veículo <em>sem fila e sem dor de cabeça.</em></h2>
+  <p>Transferência, licenciamento, emplacamento e desbloqueio de sinistro com quem atende a Zona Norte há mais de 15 anos.</p>
+  <a class="btn" href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg> Fazer orçamento grátis</a>
 </section>
 
-<!-- ============ STATS COM CONTADOR ============ -->
-<div class="stats-grid" id="statsGrid">
-    <div class="stat-card">
-        <div class="stat-number" data-count="12" data-suffix="x">0</div>
-        <div class="stat-label">no cartão de crédito</div>
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b data-n="15" data-s="+">0</b><span>anos de mercado</span></div>
+    <div class="stat"><b data-n="12" data-s="x">0</b><span>no cartão de crédito</span></div>
+    <div class="stat"><b>SSP-90775</b><span>credenciado oficial</span></div>
+  </div>
+
+  <section id="servicos">
+    <h3 class="sec">Nossos serviços</h3>
+    <div class="box">
+      <div class="bar"><div class="dots"><i></i><i></i><i></i></div>
+        <div class="tabs" id="tabs" role="tablist">
+          <button class="tab on" type="button" role="tab" data-t="t1" aria-selected="true"><svg class="ic" aria-hidden="true"><use href="#i-swap"/></svg> Transferência</button>
+          <button class="tab" type="button" role="tab" data-t="t2" aria-selected="false"><svg class="ic" aria-hidden="true"><use href="#i-id"/></svg> Licenciamento</button>
+          <button class="tab" type="button" role="tab" data-t="t3" aria-selected="false"><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg> Placas Mercosul</button>
+          <button class="tab" type="button" role="tab" data-t="t4" aria-selected="false"><svg class="ic" aria-hidden="true"><use href="#i-unlock"/></svg> Sinistro</button>
+        </div></div>
+      <div class="body">
+        <div id="t1" class="pane on" role="tabpanel"><h4>Transferência de veículo</h4><p>Passamos a propriedade do veículo para o seu nome junto ao Detran SP. Você nos envia os documentos e a gente resolve, sem pegar fila.</p><a class="btn" href="https://wa.me/5511955400139?text=Quero%20fazer%20transfer%C3%AAncia." target="_blank" rel="noopener noreferrer"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg> Pedir transferência</a></div>
+        <div id="t2" class="pane" role="tabpanel"><h4>Licenciamento anual (CRLV-e)</h4><p>Emitimos o documento anual do veículo e você recebe o PDF atualizado no celular.</p><a class="btn" href="https://wa.me/5511955400139?text=Quero%20fazer%20licenciamento." target="_blank" rel="noopener noreferrer"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg> Pedir licenciamento</a></div>
+        <div id="t3" class="pane" role="tabpanel"><h4>Emplacamento e placas Mercosul</h4><p>Primeira placa para veículo zero e troca para o padrão Mercosul, com rapidez.</p><a class="btn" href="https://wa.me/5511955400139?text=Quero%20informa%C3%A7%C3%B5es%20sobre%20placas%20Mercosul." target="_blank" rel="noopener noreferrer"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg> Pedir placa</a></div>
+        <div id="t4" class="pane" role="tabpanel"><h4>Desbloqueio de sinistro e restrições</h4><p>Regularizamos veículos com histórico de sinistro ou restrição administrativa.</p><a class="btn" href="https://wa.me/5511955400139?text=Preciso%20desbloquear%20sinistro." target="_blank" rel="noopener noreferrer"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg> Consultar desbloqueio</a></div>
+      </div>
     </div>
-    <div class="stat-card">
-        <div class="stat-number" data-count="100" data-suffix="%">0</div>
-        <div class="stat-label">Processos Digitais</div>
+  </section>
+
+  <section class="promo">
+    <h3>Parcele seus débitos em até 12x</h3>
+    <p>IPVA, multas e licenciamento no cartão de crédito.</p>
+    <a class="btn-w" href="https://wa.me/5511955400139?text=Quero%20simular%20o%20parcelamento%20em%2012x." target="_blank" rel="noopener noreferrer">Simular parcelamento</a>
+  </section>
+
+  <section id="quem-somos" class="about">
+    <h3 class="sec">Quem somos</h3>
+    <p>O Camargo Despachante é uma assessoria de documentos de veículos consolidada há mais de 15 anos, com atuação no mercado nacional e sede no Limão, Zona Norte de São Paulo.</p>
+    <p>Trabalhamos junto ao Detran, à Secretaria da Fazenda e a outros órgãos. Sabemos que você está entregando seus documentos a alguém, e a confiança nessa pessoa vale tanto quanto o serviço.</p>
+    <div class="why">
+      <div><h4>Responsabilidade</h4><p>Cada documento tratado com cuidado, do protocolo à entrega.</p></div>
+      <div><h4>Ética</h4><p>Valores claros e processo transparente do início ao fim.</p></div>
+      <div><h4>Agilidade</h4><p>Você acompanha tudo pelo WhatsApp, sem ir ao órgão.</p></div>
     </div>
-    <div class="stat-card">
-        <div class="stat-number" data-count="90775" data-prefix="SSP-" data-pad="5" data-animate="false">SSP-90775</div>
-        <div class="stat-label">Credenciado Oficial</div>
+  </section>
+
+  <section id="contato" class="contact">
+    <div>
+      <h3 class="sec">Onde estamos</h3>
+      <div class="row"><b><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></b><div><h4>Endereço</h4><p>Av. Deputado Emílio Carlos, 2369 - Vila Santa Maria (Limão), São Paulo - SP, CEP 02721-200</p></div></div>
+      <div class="row"><b><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></b><div><h4>Telefones</h4><a href="tel:+5511955400139">WhatsApp: (11) 95540-0139</a><br><a href="tel:+551138548052">Fixo: (11) 3854-8052</a></div></div>
+      <div class="row"><b><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg></b><div><h4>E-mail</h4><a href="mailto:camargo.despachante@hotmail.com">camargo.despachante@hotmail.com</a></div></div>
+      <div class="row"><b><svg class="ic" aria-hidden="true"><use href="#i-insta"/></svg></b><div><h4>Instagram</h4><a href="https://www.instagram.com/camargo.despachante/" target="_blank" rel="noopener noreferrer">@camargo.despachante</a></div></div>
+      <div class="row"><b><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></b><div><h4>Horário de atendimento</h4><p>Segunda a quinta: 09h às 18h<br>Sexta: 09h às 17h<br>Sábado e domingo: fechado</p></div></div>
     </div>
+    <div class="mapcol"><div class="map">
+      <iframe title="Localização do Camargo Despachante" src="https://maps.google.com/maps?q=Av.%20Deputado%20Em%C3%ADlio%20Carlos%2C%202369%20-%20Vila%20Santa%20Maria%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2002721-200&z=16&ie=UTF8&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+    <button type="button" class="strip" id="route"><svg class="ic" aria-hidden="true"><use href="#i-nav"/></svg> Traçar rota no Google Maps</button></div>
+  </section>
 </div>
+</main>
 
-<section class="browser-mockup">
-    <div class="browser-box">
-        <div class="browser-bar">
-            <div class="dots">
-                <div class="dot dot-1"></div><div class="dot dot-2"></div><div class="dot dot-3"></div>
-            </div>
-            <div class="browser-tabs" id="tabsContainer" role="tablist">
-                <button class="tab-btn active" type="button" role="tab" data-tab="tab-1" aria-selected="true">
-                    <i class="fa-solid fa-right-left"></i> Transferência
-                </button>
-                <button class="tab-btn" type="button" role="tab" data-tab="tab-2" aria-selected="false">
-                    <i class="fa-solid fa-id-card"></i> Licenciamento
-                </button>
-                <button class="tab-btn" type="button" role="tab" data-tab="tab-3" aria-selected="false">
-                    <i class="fa-solid fa-car-rear"></i> Placas Mercosul
-                </button>
-                <button class="tab-btn" type="button" role="tab" data-tab="tab-4" aria-selected="false">
-                    <i class="fa-solid fa-unlock"></i> Sinistro
-                </button>
-            </div>
-        </div>
-
-        <div class="browser-body">
-            <div id="tab-1" class="tab-content active" role="tabpanel">
-                <h3><i class="fa-solid fa-right-left" style="color: var(--primary-red);"></i> Transferência de Veículo</h3>
-                <p>Transferimos a propriedade do seu veículo junto ao Detran SP sem complicação. Atendimento rápido e sem necessidade de pegar filas.</p>
-                <a class="btn-whatsapp" href="https://wa.me/5511955400139?text=Quero%20fazer%20transfer%C3%AAncia." target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp"></i> Solicitar no WhatsApp
-                </a>
-            </div>
-
-            <div id="tab-2" class="tab-content" role="tabpanel">
-                <h3><i class="fa-solid fa-id-card" style="color: var(--primary-red);"></i> Licenciamento Anual (CRLV-e)</h3>
-                <p>Emissão rápida do seu documento anual do veículo. Receba o PDF digital atualizado direto no seu celular.</p>
-                <a class="btn-whatsapp" href="https://wa.me/5511955400139?text=Quero%20fazer%20licenciamento." target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp"></i> Solicitar Licenciamento
-                </a>
-            </div>
-
-            <div id="tab-3" class="tab-content" role="tabpanel">
-                <h3><i class="fa-solid fa-car-rear" style="color: var(--primary-red);"></i> Emplacamento e Placas Mercosul</h3>
-                <p>Primeira placa para veículos novos e atualização para o novo padrão Mercosul com rapidez garantida.</p>
-                <a class="btn-whatsapp" href="https://wa.me/5511955400139?text=Quero%20informa%C3%A7%C3%B5es%20sobre%20placas%20Mercosul." target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp"></i> Solicitar Placa
-                </a>
-            </div>
-
-            <div id="tab-4" class="tab-content" role="tabpanel">
-                <h3><i class="fa-solid fa-unlock" style="color: var(--primary-red);"></i> Desbloqueio de Sinistro e Restrições</h3>
-                <p>Regularização e desimpedimento de veículos com histórico de sinistro ou restrições administrativas.</p>
-                <a class="btn-whatsapp" href="https://wa.me/5511955400139?text=Preciso%20desbloquear%20sinistro." target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp"></i> Consultar Desbloqueio
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="parcelamento-card">
-    <div class="card-inner">
-        <h3>Parcele Débitos em até 12x</h3>
-        <p>Parcelamos IPVA, multas e licenciamento em até 12 vezes no cartão de crédito.</p>
-        <a class="btn-white" href="https://wa.me/5511955400139?text=Quero%20simular%20o%20parcelamento%20em%2012x." target="_blank" rel="noopener noreferrer">Simular Parcelamento</a>
-    </div>
-</section>
-
-<section class="contact-grid">
-    <div class="contact-info">
-        <h3>Onde Estamos</h3>
-        <div class="info-row">
-            <i class="fa-solid fa-location-dot"></i>
-            <div><h4>Endereço</h4>
-            <p>Av. Deputado Emílio Carlos, 2369 - Vila Santa Maria (Limão), São Paulo - SP, CEP 02721-200</p></div>
-        </div>
-        <div class="info-row">
-            <i class="fa-solid fa-phone"></i>
-            <div><h4>Telefones</h4>
-            <p>WhatsApp: (11) 95540-0139<br>Fixo: (11) 3854-8052</p></div>
-        </div>
-        <div class="info-row">
-            <i class="fa-solid fa-clock"></i>
-            <div><h4>Horários de Atendimento</h4>
-            <p>Segunda a Quinta: 09:00h às 18:00h<br>Sexta-feira: 09:00h às 17:00h<br>Sábado e Domingo: Fechado</p></div>
-        </div>
-    </div>
-
-    <!-- ========= MAPA COM BOTÃO DE ROTA ========= -->
-    <div class="map-wrapper">
-        <iframe
-            title="Localização Camargo Despachante"
-            src="https://maps.google.com/maps?q=Av.%20Deputado%20Em%C3%ADlio%20Carlos%2C%202369%20-%20Vila%20Santa%20Maria%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2002721-200&t=&z=16&ie=UTF8&iwloc=&output=embed"
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-
-        <button type="button" class="btn-route" id="btnRoute" aria-label="Traçar rota até a loja">
-            <i class="fa-solid fa-diamond-turn-right"></i> Traçar Rota
-        </button>
-    </div>
-</section>
-
-<!-- Toast de carregando rota -->
-<div class="route-toast" id="routeToast" role="status" aria-live="polite">
-    <span class="spinner"></span> Obtendo sua localização...
-</div>
-
-<a class="whatsapp-float" href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-</a>
+<div class="toast" id="toast" role="status" aria-live="polite">Obtendo sua localização...</div>
+<footer>© <span id="yr">2026</span> Camargo Despachante • SSP-90775 • <a href="https://www.instagram.com/camargo.despachante/" target="_blank" rel="noopener noreferrer">Instagram</a></footer>
+<a class="float" href="https://wa.me/5511955400139?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg></a>
 
 <script>
-(function () {
-    'use strict';
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id)};
 
-    /* ============ 1. HORÁRIO DE BRASÍLIA ============ */
-    function getBrasiliaParts() {
-        const fmt = new Intl.DateTimeFormat('en-US', {
-            timeZone: 'America/Sao_Paulo',
-            weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false
-        });
-        const map = {};
-        fmt.formatToParts(new Date()).forEach(p => { map[p.type] = p.value; });
-        const dayMap = { Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6 };
-        let hour = parseInt(map.hour, 10);
-        if (hour === 24) hour = 0;
-        const minute = parseInt(map.minute, 10);
-        return { day: dayMap[map.weekday], totalMin: hour * 60 + minute };
-    }
+function status(){
+  var p=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()),m={};
+  p.forEach(function(x){m[x.type]=x.value});
+  var d={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[m.weekday],h=parseInt(m.hour,10)%24,t=h*60+parseInt(m.minute,10),open=false;
+  if(d>=1&&d<=4)open=t>=540&&t<1080;else if(d===5)open=t>=540&&t<1020;
+  $('pill').className='pill '+(open?'open':'closed');
+  $('pillTxt').textContent=open?'Aberto agora':'Fechado agora';
+}
 
-    function updateStoreStatus() {
-        const pill  = document.getElementById('statusPill');
-        const label = document.getElementById('statusLabel');
-        if (!pill || !label) return;
+var tabs=$('tabs'),btns=tabs.querySelectorAll('.tab');
+function act(b){
+  btns.forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-selected',on)});
+  document.querySelectorAll('.pane').forEach(function(c){c.classList.toggle('on',c.id===b.dataset.t)});
+}
+tabs.addEventListener('click',function(e){var b=e.target.closest('.tab');if(b)act(b)});
+tabs.addEventListener('keydown',function(e){
+  var a=[].slice.call(btns),i=a.indexOf(e.target.closest('.tab')),n=null;
+  if(e.key==='ArrowRight')n=a[(i+1)%a.length];if(e.key==='ArrowLeft')n=a[(i+a.length-1)%a.length];
+  if(n){e.preventDefault();n.focus();act(n)}
+});
 
-        const { day, totalMin } = getBrasiliaParts();
-        const OPEN = 9 * 60, CLOSE_MONTHU = 18 * 60, CLOSE_FRI = 17 * 60;
-        let isOpen = false;
+var tb=$('themeBtn');
+function theme(t){document.documentElement.setAttribute('data-theme',t);tb.innerHTML='<svg class="ic" aria-hidden="true"><use href="#i-'+(t==='dark'?'sun':'moon')+'"/></svg>';try{localStorage.setItem('cd-theme',t)}catch(e){}}
+var sv=null;try{sv=localStorage.getItem('cd-theme')}catch(e){}
+theme(sv||(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+tb.addEventListener('click',function(){theme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark')});
 
-        if (day >= 1 && day <= 4)      isOpen = totalMin >= OPEN && totalMin < CLOSE_MONTHU;
-        else if (day === 5)            isOpen = totalMin >= OPEN && totalMin < CLOSE_FRI;
+function count(el){
+  var n=+el.dataset.n,s=el.dataset.s||'',t0=performance.now();
+  (function f(now){var p=Math.min((now-t0)/1400,1);el.textContent=Math.round(n*(1-Math.pow(1-p,4)))+s;if(p<1)requestAnimationFrame(f)})(t0);
+}
+var nums=document.querySelectorAll('[data-n]');
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){count(e.target);io.unobserve(e.target)}})},{threshold:.4});
+  nums.forEach(function(n){io.observe(n)});
+}else nums.forEach(count);
 
-        pill.classList.toggle('open', isOpen);
-        pill.classList.toggle('closed', !isOpen);
-        label.textContent = isOpen ? 'Aberto Agora' : 'Loja Fechada';
-    }
+var ADDR='Av. Deputado Emílio Carlos, 2369 - Vila Santa Maria (Limão), São Paulo - SP',toast=$('toast');
+$('route').addEventListener('click',function(){
+  var base='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(ADDR)+'&travelmode=driving';
+  toast.classList.add('show');
+  function go(u){toast.textContent='Abrindo rota...';setTimeout(function(){window.open(u,'_blank','noopener');toast.classList.remove('show');setTimeout(function(){toast.textContent='Obtendo sua localização...'},400)},400)}
+  if(navigator.geolocation)navigator.geolocation.getCurrentPosition(function(p){go(base+'&origin='+encodeURIComponent(p.coords.latitude+','+p.coords.longitude))},function(){go(base)},{timeout:6000,maximumAge:60000});
+  else go(base);
+});
 
-    /* ============ 2. ABAS ============ */
-    function initTabs() {
-        const container = document.getElementById('tabsContainer');
-        if (!container) return;
-
-        const allBtns     = container.querySelectorAll('.tab-btn');
-        const allContents = document.querySelectorAll('.tab-content');
-
-        function activate(tabId, btnEl) {
-            allContents.forEach(c => c.classList.toggle('active', c.id === tabId));
-            allBtns.forEach(b => {
-                const on = (b === btnEl);
-                b.classList.toggle('active', on);
-                b.setAttribute('aria-selected', on ? 'true' : 'false');
-            });
-        }
-
-        container.addEventListener('click', function (e) {
-            const btn = e.target.closest('.tab-btn');
-            if (!btn || !container.contains(btn)) return;
-            const tabId = btn.getAttribute('data-tab');
-            if (tabId) activate(tabId, btn);
-
-            // replay do ícone
-            const icon = btn.querySelector('i');
-            if (icon) { icon.style.animation = 'none'; void icon.offsetWidth; icon.style.animation = ''; }
-        });
-
-        container.addEventListener('keydown', function (e) {
-            const btn = e.target.closest('.tab-btn');
-            if (!btn) return;
-            const arr = Array.from(allBtns);
-            const i = arr.indexOf(btn);
-            let next = null;
-            if (e.key === 'ArrowRight') next = arr[(i + 1) % arr.length];
-            if (e.key === 'ArrowLeft')  next = arr[(i - 1 + arr.length) % arr.length];
-            if (next) { e.preventDefault(); next.focus(); activate(next.getAttribute('data-tab'), next); }
-        });
-    }
-
-    /* ============ 3. TEMA ============ */
-    function initTheme() {
-        const btn  = document.getElementById('themeBtn');
-        const icon = document.getElementById('themeIcon');
-        if (!btn || !icon) return;
-
-        function apply(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            icon.className = (theme === 'dark') ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-            try { localStorage.setItem('cd-theme', theme); } catch (e) {}
-        }
-        let saved = null;
-        try { saved = localStorage.getItem('cd-theme'); } catch (e) {}
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        apply(saved || (prefersDark ? 'dark' : 'light'));
-        btn.addEventListener('click', function () {
-            const cur = document.documentElement.getAttribute('data-theme');
-            apply(cur === 'dark' ? 'light' : 'dark');
-        });
-    }
-
-    /* ============ 4. CONTADOR ANIMADO (0 → valor final) ============ */
-    function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
-
-    function animateCount(el) {
-        // Se o elemento já foi animado ou está marcado como não animável, sai
-        if (el.dataset.animated === 'true' || el.dataset.animate === 'false') return;
-        el.dataset.animated = 'true';
-
-        const target = parseInt(el.dataset.count, 10);
-        const suffix = el.dataset.suffix || '';
-        const prefix = el.dataset.prefix || '';
-        const pad    = parseInt(el.dataset.pad, 10) || 0;
-        const duration = 1600; // ms
-        const start = performance.now();
-
-        function tick(now) {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = easeOutQuart(progress);
-            const current = Math.round(target * eased);
-
-            let display = String(current);
-            if (pad > 0) display = display.padStart(pad, '0');
-            el.textContent = prefix + display + (suffix ? '' : '');
-
-            // suffix separado com span para ficar bonito
-            if (suffix) {
-                el.innerHTML = prefix + display + '<span class="suffix">' + suffix + '</span>';
-            } else {
-                el.textContent = prefix + display;
-            }
-
-            if (progress < 1) requestAnimationFrame(tick);
-            else {
-                // garante valor final exato
-                if (suffix) {
-                    el.innerHTML = prefix + String(target).padStart(pad, '0') + '<span class="suffix">' + suffix + '</span>';
-                } else {
-                    el.textContent = prefix + String(target).padStart(pad, '0');
-                }
-            }
-        }
-        requestAnimationFrame(tick);
-    }
-
-    function initCounters() {
-        const nums = document.querySelectorAll('.stat-number[data-count]');
-        if (!nums.length) return;
-
-        // IntersectionObserver dispara quando o card entra na tela
-        if ('IntersectionObserver' in window) {
-            const io = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        animateCount(entry.target);
-                        io.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.4 });
-
-            nums.forEach(n => io.observe(n));
-        } else {
-            // Fallback: anima todos direto
-            nums.forEach(animateCount);
-        }
-    }
-
-    /* ============ 5. TRAÇAR ROTA ============ */
-    const STORE_LAT  = -23.48628287885141;
-    const STORE_LNG  = -46.68007292376179;
-    const STORE_ADDR = 'Av. Deputado Emílio Carlos, 2369 - Vila Santa Maria (Limão), São Paulo - SP';
-
-    function openRouteFromHere() {
-        const url = 'https://www.google.com/maps/dir/?api=1'
-            + '&destination=' + encodeURIComponent(STORE_ADDR)
-            + '&destination_place_id=' // opcional
-            + '&travelmode=driving';
-
-        // Tenta usar a localização atual via geolocation
-        const toast = document.getElementById('routeToast');
-        if (toast) toast.classList.add('show');
-
-        function finish(url) {
-            if (toast) {
-                toast.innerHTML = '<i class="fa-solid fa-check" style="color:#22c55e"></i> Abrindo rota...';
-            }
-            setTimeout(function () {
-                window.open(url, '_blank', 'noopener');
-                if (toast) {
-                    toast.classList.remove('show');
-                    setTimeout(function () {
-                        toast.innerHTML = '<span class="spinner"></span> Obtendo sua localização...';
-                    }, 400);
-                }
-            }, 500);
-        }
-
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                function (pos) {
-                    const origin = pos.coords.latitude + ',' + pos.coords.longitude;
-                    const urlWithOrigin = 'https://www.google.com/maps/dir/?api=1'
-                        + '&origin=' + encodeURIComponent(origin)
-                        + '&destination=' + encodeURIComponent(STORE_ADDR)
-                        + '&travelmode=driving';
-                    finish(urlWithOrigin);
-                },
-                function () {
-                    // usuário negou ou deu erro: abre com destino apenas
-                    finish(url);
-                },
-                { enableHighAccuracy: false, timeout: 6000, maximumAge: 60000 }
-            );
-        } else {
-            finish(url);
-        }
-    }
-
-    function initRouteButton() {
-        const btn = document.getElementById('btnRoute');
-        if (!btn) return;
-        btn.addEventListener('click', openRouteFromHere);
-    }
-
-    /* ============ BOOT ============ */
-    function boot() {
-        initTheme();
-        initTabs();
-        initCounters();
-        initRouteButton();
-        updateStoreStatus();
-        setInterval(updateStoreStatus, 30000);
-    }
-
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
-    else boot();
+$('yr').textContent=new Date().getFullYear();
+status();setInterval(status,30000);
 })();
 </script>
 </body>
